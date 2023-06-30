@@ -1,5 +1,8 @@
 .weather_tempature {
   position: absolute;
+  color: white;
+  z-index: 1;
+  max-width: 100%;
 }
 
 .weather_conditions {
