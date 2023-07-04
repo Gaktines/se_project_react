@@ -1,5 +1,6 @@
 import "./Weather.css";
-import weatherOptions from "../../../src/utils/constants";
+import weatherOptions from "../../utils/constants.js";
+
 
 const Weather = ({day, type}) => {
   const imageSrc = weatherOptions.filter((image) => {
