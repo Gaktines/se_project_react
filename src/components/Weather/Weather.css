@@ -1,0 +1,25 @@
+@font-face {
+    font-family: Cabinet Grotesk;
+    src: '../fonts/CabinetGrotesk-Bold.woff';
+}
+.weather_tempature {
+    font-family: Cabinet Grotesk;
+    font-style: bold;
+  position: absolute;
+  color: white;
+  z-index: 1;
+  align-items: center;
+  padding-top: 20px;
+  padding-left: 16px;
+  padding-bottom: 20px;
+  font-size: 36px;
+
+}
+
+.weather_conditions {
+  position: relative;
+  width: 100%;
+}
+.main {
+  padding: 0 20px;
+}

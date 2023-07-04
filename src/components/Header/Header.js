@@ -15,7 +15,7 @@ const Header = () => {
         </div>
         <div>Name</div>
         <div>
-          <img src="/images/avatar.svg" alt="avatar" />
+          <img src={require("../../images/avatar.svg").default} alt="avatar" />
         </div>
       </div>
     </header>

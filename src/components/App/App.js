@@ -1,13 +1,18 @@
 
 import "./App.css";
 import Header from '../Header/Header';
-import Main from '../Main/Main';
+import Weather from '../Weather/Weather';
+import Footer from "../Footer/Footer";
 
 function App() {
   return (
     <div>
       <Header />
-      <Main />
+      <main className="main">
+        <Weather/>
+      <section id="card-section"></section>
+      </main>
+      <Footer />
     </div>
   );
 }
