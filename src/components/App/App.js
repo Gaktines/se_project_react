@@ -9,7 +9,7 @@ function App() {
     <div>
       <Header />
       <main className="main">
-        <Weather/>
+        <Weather day={true} type='stormy'/>
       <section id="card-section"></section>
       </main>
       <Footer />

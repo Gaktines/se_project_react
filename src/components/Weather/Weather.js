@@ -39,11 +39,11 @@ const weatherOptions = [
   { url: "../images/conditions/day/sunnyDay.svg", day: true, type: "sunny" },
 ];
 
-const Weather = () => {
+const Weather = ({day, type}) => {
   const imageSrc = weatherOptions.filter((image) => {
     return image.day === day && image.type === type;
   });
-  console.log(imageSrc[0].url);
+  const imageSrcUrl = imageSrc[0].url || "";
   return (
     <>
       <section id="weather">
@@ -51,7 +51,7 @@ const Weather = () => {
         <div>
           <img
             className="weather_conditions"
-            src={require("../../images/conditions/sunnyDay.svg").default}
+            src={imageSrcUrl}
             alt="conditions"
           />
         </div>
