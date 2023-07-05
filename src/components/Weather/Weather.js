@@ -2,7 +2,7 @@ import "./Weather.css";
 import {weatherOptions} from "../../utils/constants.js";
 
 
-const Weather = ({day, type}) => {
+const Weather = ({day, type, weatherTemp= ""}) => {
   const imageSrc = weatherOptions.filter((image) => {
     return image.day === day && image.type === type;
   });
@@ -10,7 +10,7 @@ const Weather = ({day, type}) => {
   return (
     <>
       <section id="weather">
-        <div className="weather_tempature">65 F</div>
+        <div className="weather_tempature">{weatherTemp}</div>
         <div>
           <img
             className="weather_conditions"
