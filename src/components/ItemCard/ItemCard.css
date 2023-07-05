@@ -1,0 +1,14 @@
+.card__section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.card__title {
+    align-items: center;
+}
+
+.card_image {
+    height: 325px;
+    width: 328px;
+    border-radius: 10px;
+}

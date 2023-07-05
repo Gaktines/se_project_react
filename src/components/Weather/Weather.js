@@ -1,5 +1,5 @@
 import "./Weather.css";
-import weatherOptions from "../../utils/constants.js";
+import {weatherOptions} from "../../utils/constants.js";
 
 
 const Weather = ({day, type}) => {

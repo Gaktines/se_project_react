@@ -80,4 +80,5 @@ const weatherOptions = [
   { url: require("../images/conditions/day/sunnyDay.svg").default, day: true, type: "sunny" },
 ];
 
-export default weatherOptions;
+export {weatherOptions};
+export {defaultClothingItems};
