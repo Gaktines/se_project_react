@@ -1,29 +1,13 @@
 import "./App.css";
 import Header from "../Header/Header";
-import Weather from "../Weather/Weather";
+import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
-import { defaultClothingItems } from "../../utils/constants";
-import ItemCard from "../ItemCard/ItemCard";
 
 function App() {
-  const weatherTemp = "65F";
   return (
     <div>
       <Header />
-      <main className="main">
-        <Weather day={true} type="stormy" />
-        
-        <section className="card__section"
-        >
-        Today is {weatherTemp}.You may want to wear:
-          <div className='card__items'>{defaultClothingItems.map((x) => 
-            
-            <ItemCard x={x} key={x?.id || x?._id} />
-            
-          )}
-          </div>
-        </section>
-      </main>
+      <Main />
       <Footer />
     </div>
   );
