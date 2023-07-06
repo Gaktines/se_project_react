@@ -2,7 +2,7 @@ import "./Weather.css";
 import {weatherOptions} from "../../utils/constants.js";
 
 
-const Weather = ({day, type, weatherTemp= ""}) => {
+const Weather = ({day, type, weatherTemp= ''}) => {
   const imageSrc = weatherOptions.filter((image) => {
     return image.day === day && image.type === type;
   });

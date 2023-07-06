@@ -13,14 +13,14 @@ function App() {
       <main className="main">
         <Weather day={true} type="stormy" />
         
-        <section className="card__section" weatherTemp = {weatherTemp}
+        <section className="card__section"
         >
         Today is {weatherTemp}.You may want to wear:
-          <div className='card__items'>{defaultClothingItems.map((x) => {
-            return(
-            <ItemCard x={x} />
-            );
-          })}
+          <div className='card__items'>{defaultClothingItems.map((x) => 
+            
+            <ItemCard x={x} key={x?.id || x?._id} />
+            
+          )}
           </div>
         </section>
       </main>
