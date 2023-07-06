@@ -3,10 +3,11 @@ import { defaultClothingItems } from "../../utils/constants";
 import Weather from "../Weather/Weather";
 import ItemCard from "../ItemCard/ItemCard";
 
-const weatherTemp = "65F";
 
-const Main = () => {
-<main className="main">
+
+function Main({weatherTemp})  {
+    return (
+    <main className="main">
 <Weather day={true} type="stormy" weatherTemp = {weatherTemp}/>
 
 <section className="card__section" >
@@ -19,6 +20,7 @@ Today is {weatherTemp}.You may want to wear:
   </div>
 </section>
 </main>
+);
 }
 
 export default Main;
