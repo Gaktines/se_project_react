@@ -3,17 +3,18 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import {useState} from "react";
+import { useState } from "react";
 import ItemModal from "../ItemModal/ItemModal";
 
 function App() {
   const weatherTemp = "65F";
   const [activeModal, setActiveModal] = useState("");
-const [selectedCard, setSelectedCard] = useState({});
+  const [selectedCard, setSelectedCard] = useState({});
 
-const handleItemCard = (card) => {
-  setSelectedCard(card);
-};
+  const handleItemCard = (card) => {
+    setActiveModal("preview");
+    setSelectedCard(card);
+  };
 
   const handleActiveCreateModal = () => {
     setActiveModal("create");
@@ -21,11 +22,11 @@ const handleItemCard = (card) => {
   const handleCloseModal = () => {
     setActiveModal("");
   };
-  console.log(selectedCard);
+
   return (
     <div>
       <Header onClick={handleActiveCreateModal} />
-      <Main weatherTemp={weatherTemp} onSelectCard ={handleItemCard}/>
+      <Main weatherTemp={weatherTemp} onSelectCard={handleItemCard} />
       <Footer />
       {activeModal === "create" && (
         <ModalWithForm onClose={handleCloseModal}>
@@ -57,7 +58,7 @@ const handleItemCard = (card) => {
           <div>
             <div>
               <input type="radio" className="radio__hot" id="hot" value="hot" />
-              <lavbel>Hot</lavbel>
+              <label>Hot</label>
             </div>
             <div>
               <input
@@ -66,7 +67,7 @@ const handleItemCard = (card) => {
                 id="warm"
                 value="warm"
               />
-              <lavbel>Warm</lavbel>
+              <label>Warm</label>
             </div>
             <div>
               <input
@@ -75,12 +76,14 @@ const handleItemCard = (card) => {
                 id="cold"
                 value="cold"
               />
-              <lavbel>Cold</lavbel>
+              <label>Cold</label>
             </div>
           </div>
         </ModalWithForm>
       )}
-      <ItemModal />
+      {activeModal === "preview" && (
+        <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />
+      )}
     </div>
   );
 }
