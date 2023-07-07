@@ -1,4 +1,4 @@
-const ItemModal = (selectedCard, onClose) => {
+const ItemModal = ({selectedCard, onClose}) => {
     console.log(selectedCard);
     return(
         
