@@ -3,20 +3,32 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import {useState} from "react";
+import ItemModal from "../ItemModal/ItemModal";
 
 function App() {
   const weatherTemp = "65F";
   const [activeModal, setActiveModal] = useState("");
+const [selectedCard, setSelectedCard] = useState({});
+
+const handleItemCard = (card) => {
+  setSelectedCard(card);
+};
+
   const handleActiveCreateModal = () => {
     setActiveModal("create");
   };
+  const handleCloseModal = () => {
+    setActiveModal("");
+  };
+  console.log(selectedCard);
   return (
     <div>
       <Header onClick={handleActiveCreateModal} />
-      <Main weatherTemp={weatherTemp} />
+      <Main weatherTemp={weatherTemp} onSelectCard ={handleItemCard}/>
       <Footer />
       {activeModal === "create" && (
-        <ModalWithForm>
+        <ModalWithForm onClose={handleCloseModal}>
           <label>
             Name
             <input
@@ -68,6 +80,7 @@ function App() {
           </div>
         </ModalWithForm>
       )}
+      <ItemModal />
     </div>
   );
 }
