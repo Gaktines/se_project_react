@@ -6,12 +6,68 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 function App() {
   const weatherTemp = "65F";
+  const [activeModal, setActiveModal] = useState("");
+  const handleActiveCreateModal = () => {
+    setActiveModal("create");
+  };
   return (
     <div>
-      <Header />
-      <Main weatherTemp = {weatherTemp} />
+      <Header onClick={handleActiveCreateModal} />
+      <Main weatherTemp={weatherTemp} />
       <Footer />
-      <ModalWithForm>These are the children</ModalWithForm>
+      {activeModal === "create" && (
+        <ModalWithForm>
+          <label>
+            Name
+            <input
+              className="modal__input"
+              type="text"
+              name="name"
+              placeholder="Name"
+              minLength="1"
+              maxLength="30"
+              required
+            ></input>
+          </label>
+          <label>
+            Image
+            <input
+              className="modal__input"
+              type="url"
+              name="link"
+              placeholder="Image URL"
+              minLength="1"
+              maxLength="30"
+              required
+            ></input>
+          </label>
+          <p>Select the weather type:</p>
+          <div>
+            <div>
+              <input type="radio" className="radio__hot" id="hot" value="hot" />
+              <lavbel>Hot</lavbel>
+            </div>
+            <div>
+              <input
+                type="radio"
+                className="radio__warm"
+                id="warm"
+                value="warm"
+              />
+              <lavbel>Warm</lavbel>
+            </div>
+            <div>
+              <input
+                type="radio"
+                className="radio__cold"
+                id="cold"
+                value="cold"
+              />
+              <lavbel>Cold</lavbel>
+            </div>
+          </div>
+        </ModalWithForm>
+      )}
     </div>
   );
 }
