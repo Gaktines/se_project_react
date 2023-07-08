@@ -11,7 +11,8 @@
 
 }
 
-.modal__contents{
+.modal__content{
+    background-color: white;
 border-radius: 20px;
 display: flex;
 flex-direction: column;
@@ -23,20 +24,18 @@ max-width: 498px;
 width: 100%;
 position: relative;
 height: 610px;
-margin-left: 471px;
+
 
 }
 
 .modal__image{
-max-width: 498px;
-width: 100%;
+width: 498px;
 position: relative;
-justify-content: center;
-align-items: center;
-height: auto;
 margin-top: -115px;
+height: 498px;
+
 border-radius: 10px 10px 0px 0px;
-margin-right: 78px;
+
 }
 
 .modal__close{
@@ -53,15 +52,17 @@ margin-right: 78px;
 }
 
 .modal__title{
-position: relative;
+position: absolute;
 left: 10px;
-bottom: 20px;
+bottom: 50px;
 
 }
 
 .modal__weather-type{
-position: relative;
+position: absolute;
 left: 10px;
-bottom: 10px;
+bottom: 20px;
 }
+
+
 
