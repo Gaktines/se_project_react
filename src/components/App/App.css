@@ -1,0 +1,16 @@
+@font-face {
+    font-family: Cabinet Grotesk;
+    src: '../fonts/CabinetGrotesk-Black.woff';
+}
+
+.modal__input-name{
+width: 100%;
+}
+
+.modal__input-link{
+width: 100%;
+}
+
+.modal__label{
+    font-family: Cabinet Grotesk;
+}
