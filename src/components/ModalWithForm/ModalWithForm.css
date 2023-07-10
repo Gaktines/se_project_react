@@ -20,7 +20,6 @@
    padding: 34px 36px;
    position: relative;
 
-
 }
 
 .modal__close{
@@ -46,8 +45,7 @@
 }
 
 .modal__title{
-position: absolute;
-top: 40px;
-left: 34px;
+margin-top: 40px;
+margin-left: 34px;
 }
 
