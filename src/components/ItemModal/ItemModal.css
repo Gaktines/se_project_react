@@ -31,7 +31,7 @@ height: 610px;
 .modal__image{
 width: 498px;
 position: relative;
-margin-top: -115px;
+margin-top: -75px;
 height: 498px;
 
 border-radius: 10px 10px 0px 0px;
@@ -52,17 +52,17 @@ border-radius: 10px 10px 0px 0px;
 }
 
 .modal__title{
-position: absolute;
-left: 10px;
-bottom: 50px;
 
 }
 
 .modal__weather-type{
-position: absolute;
-left: 10px;
-bottom: 20px;
+
 }
 
-
+.modal__info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 
