@@ -61,8 +61,7 @@ border-radius: 10px 10px 0px 0px;
 
 .modal__info{
     display: flex;
-    justify-content: center;
-    align-items: center;
+    
     flex-direction: column;
 }
 
