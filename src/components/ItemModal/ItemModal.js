@@ -1,7 +1,6 @@
 import "./ItemModal.css";
 
 const ItemModal = ({ selectedCard, onClose }) => {
-  console.log(selectedCard);
   return (
     <div>
       <div className={"modal"}>
