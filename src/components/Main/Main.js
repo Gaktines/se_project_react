@@ -26,7 +26,7 @@ function Main({ weatherTemp, onSelectCard }) {
         Today is {weatherTemp} F.You may want to wear:
         <div className="card__items">
           {sortedCards.map((x) => (
-            <ItemCard x={x} key={x?.id || x?._id} onSelectCard={onSelectCard} />
+            <ItemCard item={x} key={x?.id || x?._id} onSelectCard={onSelectCard} />
           ))}
         </div>
       </section>

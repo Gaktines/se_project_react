@@ -7,18 +7,12 @@ const Weather = ({ day, type, weatherTemp }) => {
   });
   const imageSrcUrl = imageSrc[0].url || "";
   return (
-    <>
-      <section id="weather">
-        <div className="weather_tempature">{weatherTemp} F</div>
-        <div>
-          <img
-            className="weather_conditions"
-            src={imageSrcUrl}
-            alt="conditions"
-          />
-        </div>
-      </section>
-    </>
+    <section id="weather">
+      <div className="weather_tempature">{weatherTemp} F</div>
+      <div>
+        <img className="weather_conditions" src={imageSrcUrl} alt={type} />
+      </div>
+    </section>
   );
 };
 
