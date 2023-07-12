@@ -11,17 +11,17 @@ const getWeatherForecast = () => {
     if (res.ok) {
       return res.json();
     } else {
-      return Promise.reject( `Error: ${res.status}`);
+      return Promise.reject(`Error: ${res.status}`);
     }
-  }).catch();
+  });
   return weatherApi;
 };
 
 const sortWeatherData = (data) => {
-const main = data.main;
-const temp = main && main.temp;
-return Math.ceil(temp);
-}
+  const main = data.main;
+  const temp = main && main.temp;
+  return Math.ceil(temp);
+};
 
-export {getWeatherForecast};
-export {sortWeatherData};
+export { getWeatherForecast };
+export { sortWeatherData };

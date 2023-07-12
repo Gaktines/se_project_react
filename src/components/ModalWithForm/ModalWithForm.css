@@ -51,14 +51,13 @@
   font-style: normal;
   font-weight: 700;
   line-height: 20px;
-  
 }
-.modal__submit-button:hover{
-    background-image: url("../../images/State=Hover.svg");
+.modal__submit-button:hover {
+  background-image: url("../../images/State=Hover.svg");
 }
 
-.modal__submit-button:disabled{
-    background-image: url("../../images/State=Disabled.svg");
+.modal__submit-button:disabled {
+  background-image: url("../../images/State=Disabled.svg");
 }
 
 .modal__title {

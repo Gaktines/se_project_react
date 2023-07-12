@@ -5,7 +5,7 @@ const Header = ({ onClick }) => {
     <header className="header">
       <div className="header__logo">
         <div>
-          <img src={require("../../images/wtwrLogo.svg").default} alt="logo" />
+          <img src={import("../../images/wtwrLogo.svg").default} alt="logo" />
         </div>
         <div>Fountain,Co</div>
       </div>
@@ -17,7 +17,7 @@ const Header = ({ onClick }) => {
         </div>
         <div>George Aktines</div>
         <div>
-          <img src={require("../../images/avatar.svg").default} alt="avatar" />
+          <img src={import("../../images/avatar.svg").default} alt="avatar" />
         </div>
       </div>
     </header>

@@ -6,7 +6,6 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useState, useEffect } from "react";
 import ItemModal from "../ItemModal/ItemModal";
 import { sortWeatherData } from "../../utils/weatherApi";
-
 import { getWeatherForecast } from "../../utils/weatherApi";
 
 function App() {
@@ -27,14 +26,18 @@ function App() {
   };
 
   useEffect(() => {
-    getWeatherForecast().then((data) => {
-     const temperature=  sortWeatherData(data);
-     setTemp(temperature);
-    });
+    getWeatherForecast()
+      .then((data) => {
+        const temperature = sortWeatherData(data);
+        setTemp(temperature);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }, []);
   return (
     <div>
-      <Header onClick={handleActiveCreateModal} temp={temp}/>
+      <Header onClick={handleActiveCreateModal} temp={temp} />
       <Main weatherTemp={temp} onSelectCard={handleItemCard} />
       <Footer />
       {activeModal === "create" && (
