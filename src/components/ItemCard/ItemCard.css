@@ -1,12 +1,15 @@
 
 .card__title {
     text-align: center;
+    position: relative;
+    top: 40px;
 }
 
 .card__image {
     height: 325px;
     width: 328px;
     border-radius: 10px;
+    
 }
 
 .card__items {

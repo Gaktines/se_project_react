@@ -13,7 +13,7 @@ const getWeatherForecast = () => {
     } else {
       return Promise.reject( `Error: ${res.status}`);
     }
-  });
+  }).catch();
   return weatherApi;
 };
 
