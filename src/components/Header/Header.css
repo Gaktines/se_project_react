@@ -25,3 +25,8 @@
     align-items: center;
     gap: 20px;
 }
+
+.header__add-button{
+    border: none;
+    background-color: white;
+}

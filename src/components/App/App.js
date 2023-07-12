@@ -3,13 +3,16 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ItemModal from "../ItemModal/ItemModal";
+import { sortWeatherData } from "../../utils/weatherApi";
+
+import { getWeatherForecast } from "../../utils/weatherApi";
 
 function App() {
-  const weatherTemp = "65F";
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
+  const [temp, setTemp] = useState(0);
 
   const handleItemCard = (card) => {
     setActiveModal("preview");
@@ -23,10 +26,16 @@ function App() {
     setActiveModal("");
   };
 
+  useEffect(() => {
+    getWeatherForecast().then((data) => {
+     const temperature=  sortWeatherData(data);
+     setTemp(temperature);
+    });
+  }, []);
   return (
     <div>
-      <Header onClick={handleActiveCreateModal} />
-      <Main weatherTemp={weatherTemp} onSelectCard={handleItemCard} />
+      <Header onClick={handleActiveCreateModal} temp={temp}/>
+      <Main weatherTemp={temp} onSelectCard={handleItemCard} />
       <Footer />
       {activeModal === "create" && (
         <ModalWithForm onClose={handleCloseModal}>
@@ -53,7 +62,7 @@ function App() {
               maxLength="30"
               required
             ></input>
-          </label >
+          </label>
           <p>Select the weather type:</p>
           <div>
             <div>

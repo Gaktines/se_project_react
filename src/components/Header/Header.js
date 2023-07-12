@@ -7,15 +7,15 @@ const Header = ({ onClick }) => {
         <div>
           <img src={require("../../images/wtwrLogo.svg").default} alt="logo" />
         </div>
-        <div>Location</div>
+        <div>Fountain,Co</div>
       </div>
       <div className="header__avatar-logo">
         <div>
-          <button type="text" onClick={onClick}>
+          <button className="header__add-button" type="text" onClick={onClick}>
             + New Clothes
           </button>
         </div>
-        <div>Name</div>
+        <div>George Aktines</div>
         <div>
           <img src={require("../../images/avatar.svg").default} alt="avatar" />
         </div>

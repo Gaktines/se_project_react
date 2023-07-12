@@ -21,7 +21,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  
   margin: auto;
   box-sizing: border-box;
   max-width: 498px;
@@ -71,6 +70,8 @@
 }
 
 .modal__info {
+  padding-top: 40px;
   display: flex;
   flex-direction: column;
+  gap: 10px;
 }

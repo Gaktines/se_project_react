@@ -10,7 +10,7 @@ const Weather = ({day, type, weatherTemp}) => {
   return (
     <>
       <section id="weather">
-        <div className="weather_tempature">{weatherTemp}</div>
+        <div className="weather_tempature">{weatherTemp} F</div>
         <div>
           <img
             className="weather_conditions"
