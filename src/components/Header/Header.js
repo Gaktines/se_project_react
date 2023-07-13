@@ -1,13 +1,14 @@
 import "./Header.css";
+import wtwrLogo from "../../images/wtwrLogo.svg";
+import avatar from "../../images/avatar.svg";
 
 const Header = ({ onClick }) => {
-  const wtwrLogo = require("../../images/wtwrLogo.svg");
-  const avatar = require("../../images/avatar.svg");
+ 
   return (
     <header className="header">
       <div className="header__logo">
         <div>
-          <img src={wtwrLogo.default} alt="logo" />
+          <img src={wtwrLogo} alt="logo" />
         </div>
         <div>Fountain,Co</div>
       </div>
@@ -19,7 +20,7 @@ const Header = ({ onClick }) => {
         </div>
         <div>George Aktines</div>
         <div>
-          <img src={avatar.default} alt="avatar" />
+          <img src={avatar} alt="avatar" />
         </div>
       </div>
     </header>

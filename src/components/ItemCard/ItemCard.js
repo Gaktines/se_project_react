@@ -4,7 +4,6 @@ const ItemCard = ({ item, onSelectCard }) => {
   console.log(item);
   return (
     <div>
-      <div></div>
       <div className="card__title">{item.name}</div>
       <img
         src={item.link}
