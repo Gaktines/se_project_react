@@ -1,0 +1,80 @@
+@font-face {
+  font-family: Cabinet Grotesk;
+  src: "../fonts/CabinetGrotesk-Black.woff";
+}
+
+.toggleSwitch {
+  display: flex;
+  position: relative;
+}
+.toggleSwitch__box {
+  width: 56px;
+  height: 28px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 25px;
+  border: 2px solid rgba(0, 0, 0, 0.5);
+  appearance: none;
+}
+
+.toggleSwitch_temperature-F {
+  position: absolute;
+  top: -6px;
+  left: 12px;
+  color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  font-family: Cabinet Grotesk;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.toggleSwitch_temperature-C {
+  position: absolute;
+  top: -6px;
+  right: 12px;
+  color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  font-family: Cabinet Grotesk;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.toggleSwitch_slider-F {
+  height: 28px;
+  width: 30px;
+  border-radius: 25px;
+  background-color: rgb(0, 0, 0);
+  position: absolute;
+  top: 3px;
+  left: 5px;
+  text-align: center;
+  font-family: Cabinet Grotesk;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  cursor: pointer;
+}
+.toggleSwitch_slider-C {
+  height: 28px;
+  width: 30px;
+  border-radius: 25px;
+  background-color: rgb(0, 0, 0);
+  position: absolute;
+  top: 3px;
+  right: 4px;
+  text-align: center;
+  font-family: Cabinet Grotesk;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  cursor: pointer;
+}
+.toggleSwitch__active {
+    color: #FFF;
+    font-size: 14px;
+}
