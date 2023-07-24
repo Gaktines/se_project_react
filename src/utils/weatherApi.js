@@ -21,6 +21,7 @@ const sortWeatherData = (data) => {
   const main = data.main;
   const temp = main && main.temp;
   const weatherTemp = {temp: {F:`${Math.round(temp)}°F` , C:`${Math.round((temp - 32) * 5/9)}°C` }}
+  console.log(weatherTemp);
   return weatherTemp;
 };
 
