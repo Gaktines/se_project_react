@@ -35,6 +35,7 @@ const handleToggleSwitchChange = () => {
 
   const onAddItem = (values) => {
     console.log(values);
+    handleCloseModal();
   };
 
   useEffect(() => {
