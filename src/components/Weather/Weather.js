@@ -13,7 +13,7 @@ const Weather = ({ day, type, weatherTemp }) => {
   const {currentTemperatureUnit} = useContext(CurrentTemperatureUnitContext);
   const temp = weatherTemp?.[currentTemperatureUnit];
 
-console.log(weatherTemp);
+
   return (
     <section id="weather">
      <div className="weather_tempature">{temp}</div>

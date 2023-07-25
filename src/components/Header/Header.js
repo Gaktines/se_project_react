@@ -2,14 +2,16 @@ import "./Header.css";
 import wtwrLogo from "../../images/wtwrLogo.svg";
 import avatar from "../../images/avatar.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
+import { Link } from "react-router-dom";
 
 const Header = ({ onClick }) => {
   return (
     <header className="header">
       <div className="header__logo">
-        <div>
+      <Link to="/">
+          
           <img src={wtwrLogo} alt="logo" />
-        </div>
+        </Link>
         <div>Fountain,Co</div>
       </div>
       <div className="header__avatar-logo">
@@ -19,7 +21,7 @@ const Header = ({ onClick }) => {
             + New Clothes
           </button>
         </div>
-        <div>George Aktines</div>
+        <Link to="/profile">George Aktines</Link>
         <div>
           <img src={avatar} alt="avatar" />
         </div>

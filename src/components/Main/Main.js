@@ -23,12 +23,12 @@ function Main({ weatherTemp, onSelectCard }) {
   });
   
   const temp = weatherTemp?.temp?.[currentTemperatureUnit];
+  
   return (
     <main className="main">
       <Weather day={true} type="stormy" weatherTemp={weatherTemp.temp} />
-
       <section className="card__section">
-        Today is {temp}.You may want to wear:
+        Today is {temp}.  You may want to wear:
         <div className="card__items">
           {sortedCards.map((x) => (
             <ItemCard item={x} key={x?.id || x?._id} onSelectCard={onSelectCard} />
