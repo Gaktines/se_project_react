@@ -1,16 +1,21 @@
 import React from "react";
 import "./Profile.css";
-import avatar from "../../images/avatar.svg";
+import SideBar from "../SideBar/SideBar";
+import ClothesSection from "../ClothesSection/ClothesSection";
 
-const Profile = () => {
+
+
+const Profile = ({ onSelectCard, handleActiveCreateModal, parsedCards}) => {
 return(
     <section className="profile">
-        <div className="profile__sideBar">
-        <img src={avatar} alt="avatar" />
-        <p className="profile__sideBar-name">George Aktines</p>
-        </div>
-        <div className="profile__clothesSection">
-        </div>
+    <div>
+    <SideBar/>
+    </div>
+    <div>
+    <ClothesSection onSelectCard={onSelectCard}
+    onClick={handleActiveCreateModal}
+    parsedCards={parsedCards}/>
+    </div>
     </section>
 )
 };
