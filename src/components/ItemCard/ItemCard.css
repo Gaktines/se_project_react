@@ -17,3 +17,13 @@
   justify-content: center;
   padding-top: 20px;
 }
+
+.card__close{
+  height: 20px;
+  width: 20px;
+  border: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1; 
+}

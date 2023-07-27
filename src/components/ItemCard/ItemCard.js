@@ -1,7 +1,7 @@
 import "./ItemCard.css";
 
 
-const ItemCard = ({ item, onSelectCard }) => {
+const ItemCard = ({ item, onSelectCard, }) => {
   console.log(item);
   return (
     <div>

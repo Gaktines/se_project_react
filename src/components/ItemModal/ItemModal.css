@@ -32,7 +32,7 @@
 .modal__image {
   width: 498px;
   position: relative;
-  margin-top: -35px;
+  margin-top: 10px;
   height: 498px;
 
   border-radius: 10px 10px 0px 0px;
@@ -50,6 +50,9 @@
   right: 10px;
   z-index: 1;
 }
+.modal__close:hover {
+  cursor: pointer;
+}
 
 .modal__title {
   color: #000;
@@ -58,6 +61,8 @@
   font-style: normal;
   font-weight: 700;
   line-height: 24px;
+  display: grid;
+  grid-area: a,
 }
 
 .modal__weather-type {
@@ -67,11 +72,40 @@
   font-style: normal;
   font-weight: 700;
   line-height: 24px;
+  display: grid;
+  grid-area: c
 }
 
 .modal__info {
-  padding-top: 40px;
+  padding-top: 20px;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  display: grid;
+  grid-template-areas:
+    "a b"
+    "c d";
+    padding-bottom: 20px;
+    padding-left: 20px;
+}
+
+.modal__delete {
+  color: #FF4D00;
+font-family: Cabinet Grotesk;
+font-size: 20px;
+font-style: normal;
+font-weight: 700;
+line-height: 24px; 
+border: none;
+background-color: white;
+display: flex;
+  align-self: flex-end;
+  padding-bottom: 32px;
+  display: grid;
+  justify-content: flex-end;
+  grid-area: b;
+}
+
+.modal__delete:hover {
+  cursor: pointer;
 }

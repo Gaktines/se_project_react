@@ -2,7 +2,6 @@ import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
-
 import { useState, useEffect } from "react";
 import ItemModal from "../ItemModal/ItemModal";
 import { sortWeatherData } from "../../utils/weatherApi";
@@ -12,13 +11,15 @@ import {Switch, Route} from "react-router-dom";
 import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import parsedCards from "../ClothesSection/ClothesSection";
+import { getItems, postItems} from "../../utils/Api";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
-
+  const [clothingItems, setClothingItems] = useState([]);
+  
   const handleItemCard = (card) => {
     setActiveModal("preview");
     setSelectedCard(card);
@@ -36,9 +37,27 @@ const handleToggleSwitchChange = () => {
 
   const onAddItem = (values) => {
     console.log(values);
-    handleCloseModal();
-  };
+    postItems(values).then((data) => {
+      setClothingItems([data, ...clothingItems]);
+      handleCloseModal();
+    }).catch((error) => {
+      console.error(error.status);;
+    });
+  }
+  useEffect(() => {
+    getItems()
+      .then((data) => {
+        setClothingItems(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
+  const handleDeleteButton = () => {
+    
+    handleCloseModal();
+  }
   useEffect(() => {
     getWeatherForecast()
       .then((data) => {
@@ -61,7 +80,8 @@ const handleToggleSwitchChange = () => {
       <Profile 
       onSelectCard={handleItemCard} 
       handleActiveCreateModal={handleActiveCreateModal}
-      parsedCards={parsedCards}  />
+      parsedCards={parsedCards}  
+      />
       </Route>
       </Switch>
       <Footer />
