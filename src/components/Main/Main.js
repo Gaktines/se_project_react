@@ -1,5 +1,5 @@
 import "./Main.css";
-import { defaultClothingItems } from "../../utils/constants";
+import "../se_project_react/db.json";
 import Weather from "../Weather/Weather";
 import ItemCard from "../ItemCard/ItemCard";
 import { useMemo, useContext } from "react";
@@ -19,7 +19,7 @@ function Main({ weatherTemp, onSelectCard }) {
       return "cold";
     }
   }, [weatherTemp], );
-  const sortedCards = defaultClothingItems.filter((item) => {
+  const sortedCards = items.filter((item) => {
     return item.weather.toLowerCase() === weatherType;
   });
   

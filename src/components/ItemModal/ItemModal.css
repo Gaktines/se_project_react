@@ -85,7 +85,7 @@
   grid-template-areas:
     "a b"
     "c d";
-    padding-bottom: 20px;
+    padding-bottom: 30px;
     padding-left: 20px;
 }
 
@@ -104,6 +104,7 @@ display: flex;
   display: grid;
   justify-content: flex-end;
   grid-area: b;
+  padding-right: 20px;
 }
 
 .modal__delete:hover {
