@@ -9,6 +9,7 @@ const ClothesSection = ({ onSelectCard, handleActiveCreateModal }) => {
     const parsedCards = defaultClothingItems.filter((item) => {
         return item.weather;
       });
+      return (
   <section className="clothesSection">
     <div className="clothesSection__header">
     <div className="clothesSection__title">Your items:</div>
@@ -29,7 +30,8 @@ const ClothesSection = ({ onSelectCard, handleActiveCreateModal }) => {
           ))}
         </div>
     </div>
-  </section>;
+  </section>
+      );
 };
 
 export default ClothesSection;
