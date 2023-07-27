@@ -1,8 +1,8 @@
 .clothesSection {
   display: flex;
   flex-direction: column;
-  padding-left: 116px;
   padding-top: 15px;
+  padding-left: 196px;
 }
 
 .clothesSection__header {

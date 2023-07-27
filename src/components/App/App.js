@@ -11,6 +11,7 @@ import {CurrentTemperatureUnitContext} from "../../contexts/CurrentTemperatureUn
 import {Switch, Route} from "react-router-dom";
 import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
+import parsedCards from "../ClothesSection/ClothesSection";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -57,7 +58,10 @@ const handleToggleSwitchChange = () => {
       <Main weatherTemp={temp} onSelectCard={handleItemCard} />
       </Route>
       <Route path="/profile">
-      <Profile />
+      <Profile 
+      onSelectCard={handleItemCard} 
+      handleActiveCreateModal={handleActiveCreateModal}
+      parsedCards={parsedCards}  />
       </Route>
       </Switch>
       <Footer />
