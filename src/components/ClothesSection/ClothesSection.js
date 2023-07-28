@@ -5,7 +5,7 @@ import ItemCard from "../ItemCard/ItemCard";
  
 
 const ClothesSection = ({ onSelectCard, handleActiveCreateModal, clothingItems }) => {
-  const parsedCards = clothingItems?.filter((item) => {
+  const parsedCards = clothingItems.filter((item) => {
     return item.weather;
   });  
       return (
