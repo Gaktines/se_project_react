@@ -11,7 +11,7 @@ import {Switch, Route} from "react-router-dom";
 import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import parsedCards from "../ClothesSection/ClothesSection";
-import { getItems, postItems} from "../../utils/Api";
+import { deleteItems, getItems, postItems} from "../../utils/Api";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -54,8 +54,8 @@ const handleToggleSwitchChange = () => {
       });
   }, []);
 
-  const handleDeleteButton = () => {
-    
+  const handleDeleteButton = (cardElement) => {
+    deleteItems(cardElement);
     handleCloseModal();
   }
   useEffect(() => {
