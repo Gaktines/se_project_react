@@ -31,6 +31,7 @@ const handleToggleSwitchChange = () => {
   const handleActiveCreateModal = () => {
     setActiveModal("create");
   };
+
   const handleCloseModal = () => {
     setActiveModal("");
   };
@@ -44,6 +45,12 @@ const handleToggleSwitchChange = () => {
       console.error(error.status);;
     });
   }
+
+  const handleDeleteButton = (cardElement) => {
+    deleteItems(cardElement);
+    handleCloseModal();
+  }
+  
   useEffect(() => {
     getItems()
       .then((data) => {
@@ -53,11 +60,7 @@ const handleToggleSwitchChange = () => {
         console.log(error);
       });
   }, []);
-
-  const handleDeleteButton = (cardElement) => {
-    deleteItems(cardElement);
-    handleCloseModal();
-  }
+ 
   useEffect(() => {
     getWeatherForecast()
       .then((data) => {
@@ -68,6 +71,7 @@ const handleToggleSwitchChange = () => {
         console.error(err);
       });
   }, []);
+
   return (
     <CurrentTemperatureUnitContext.Provider value={{currentTemperatureUnit, handleToggleSwitchChange}}>
     <div>
