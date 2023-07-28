@@ -1,13 +1,13 @@
 import "./Main.css";
 import Weather from "../Weather/Weather";
 import ItemCard from "../ItemCard/ItemCard";
-import {  useContext } from "react";
+import React, {  useContext } from "react";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 
 
 
 function Main({ weatherTemp, onSelectCard, clothingItems}) {
-  const {currentTemperatureUnit} = useContext(CurrentTemperatureUnitContext);
+  const currentTemperatureUnit = useContext(CurrentTemperatureUnitContext);
   const temp = weatherTemp?.temp?.[currentTemperatureUnit];
   const weatherType = () => {
     if (temp >= 86) {
@@ -19,6 +19,7 @@ function Main({ weatherTemp, onSelectCard, clothingItems}) {
     }
   };
   console.log(clothingItems);
+  debugger;
   const sortedCards = clothingItems?.filter((item) => {
   return item.weather.toLowerCase() === weatherType;
   });

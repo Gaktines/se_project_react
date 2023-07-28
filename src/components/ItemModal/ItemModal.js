@@ -18,7 +18,7 @@ const ItemModal = ({ selectedCard, onClose, handleDeleteButton }) => {
           <button
           className="modal__delete"
           type="button"
-          onClick={handleDeleteButton}
+          onClick={() => handleDeleteButton(selectedCard)}
         >Delete Item</button>
         </div>
       </div>

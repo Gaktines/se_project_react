@@ -47,8 +47,15 @@ const handleToggleSwitchChange = () => {
   }
 
   const handleDeleteButton = (cardElement) => {
-    deleteItems(cardElement);
-    handleCloseModal();
+    deleteItems(cardElement).then(() => {
+      const newClothingItems = clothingItems.filter((cards) => {
+        return cards.id !== cardElement;
+      });
+      setClothingItems(newClothingItems);
+      handleCloseModal();
+    }).catch((err) => {
+      console.log(err);
+   });
   }
   
   useEffect(() => {
@@ -78,7 +85,7 @@ const handleToggleSwitchChange = () => {
       <Header onClick={handleActiveCreateModal} temp={temp} />
       <Switch>
       <Route exact path="/">
-      <Main weatherTemp={temp} onSelectCard={handleItemCard} />
+      <Main weatherTemp={temp} onSelectCard={handleItemCard} clothingItems={clothingItems}/>
       </Route>
       <Route path="/profile">
       <Profile 
