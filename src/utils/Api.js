@@ -33,8 +33,8 @@ export const postItems = ({name, link, weather}) => {
   return postItems;
 };
 
-export const deleteItems = () => {
-  const deleteItems = fetch(`${baseUrl}/items/:id `, {
+export const deleteItems = (selectedCard) => {
+  const deleteItems = fetch(`${baseUrl}/items/${selectedCard.id} `, {
     method: "DELETE",
     headers: {
         "Content-Type": "application/json",
