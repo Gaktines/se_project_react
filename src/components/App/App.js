@@ -100,7 +100,7 @@ const handleToggleSwitchChange = () => {
         <AddItemModal handleCloseModal={handleCloseModal} isOpen={activeModal === "create"} onAddItem={onAddItem} />
       )}
       {activeModal === "preview" && (
-        <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />
+        <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} onClick={handleDeleteButton}/>
       )}
     </div>
     </CurrentTemperatureUnitContext.Provider>

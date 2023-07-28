@@ -19,9 +19,9 @@ function Main({ weatherTemp, onSelectCard, clothingItems}) {
     }
   };
   console.log(clothingItems);
-  debugger;
   const sortedCards = clothingItems?.filter((item) => {
-  return item.weather.toLowerCase() === weatherType;
+    console.log(item.weather.toLowerCase(), weatherType());
+  return item.weather.toLowerCase() === weatherType();
   });
    return (
     <main className="main">

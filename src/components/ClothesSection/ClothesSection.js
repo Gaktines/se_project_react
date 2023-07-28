@@ -1,14 +1,13 @@
 import React from "react";
 import "./ClothesSection.css";
 import ItemCard from "../ItemCard/ItemCard";
-import { defaultClothingItems } from "../../utils/constants";
 
-export const parsedCards = defaultClothingItems.filter((item) => {
-  return item.weather;
-});   
+ 
 
-const ClothesSection = ({ onSelectCard, handleActiveCreateModal }) => {
-    
+const ClothesSection = ({ onSelectCard, handleActiveCreateModal, clothingItems }) => {
+  const parsedCards = clothingItems?.filter((item) => {
+    return item.weather;
+  });  
       return (
   <section className="clothesSection">
     <div className="clothesSection__header">
