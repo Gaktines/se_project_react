@@ -3,7 +3,7 @@ import { weatherOptions } from "../../utils/constants.js";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import { useContext } from "react";
 
-const Weather = ({ day, type, weatherTemp }) => {
+const WeatherCard = ({ day, type, weatherTemp }) => {
   const imageSrc = weatherOptions.filter((image) => {
     return image.day === day && image.type === type;
   });
@@ -23,4 +23,4 @@ const Weather = ({ day, type, weatherTemp }) => {
   );
 };
 
-export default Weather;
+export default WeatherCard;

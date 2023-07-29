@@ -1,5 +1,5 @@
 import "./Main.css";
-import Weather from "../WeatherCard/WeatherCard";
+import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
 import React, { useMemo, useContext } from "react";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
@@ -22,7 +22,7 @@ function Main({ weatherTemp, onSelectCard, clothingItems }) {
   });
   return (
     <main className="main">
-      <Weather day={true} type="stormy" weatherTemp={weatherTemp.temp} />
+      <WeatherCard day={true} type="stormy" weatherTemp={weatherTemp.temp} />
       <section className="card__section">
         Today is {temp}°{currentTemperatureUnit.currentTemperatureUnit}. You may
         want to wear:
