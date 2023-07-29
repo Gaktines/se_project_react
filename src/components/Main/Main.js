@@ -1,5 +1,5 @@
 import "./Main.css";
-import Weather from "../Weather/Weather";
+import Weather from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
 import React, { useMemo, useContext } from "react";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
