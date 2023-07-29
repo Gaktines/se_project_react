@@ -20,7 +20,12 @@ const getWeatherForecast = () => {
 const sortWeatherData = (data) => {
   const main = data.main;
   const temp = main && main.temp;
-  const weatherTemp = {temp: {F:`${Math.round(temp)}` , C:`${Math.round((temp - 32) * 5/9)}` }};
+  const weatherTemp = {
+    temp: {
+      F: `${Math.round(temp)}`,
+      C: `${Math.round(((temp - 32) * 5) / 9)}`,
+    },
+  };
   return weatherTemp;
 };
 

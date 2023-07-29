@@ -8,14 +8,13 @@ const Header = ({ onClick }) => {
   return (
     <header className="header">
       <div className="header__logo">
-      <Link to="/">
-          
+        <Link to="/">
           <img src={wtwrLogo} alt="logo" />
         </Link>
         <div>Fountain,Co</div>
       </div>
       <div className="header__avatar-logo">
-        <ToggleSwitch/>
+        <ToggleSwitch />
         <div>
           <button className="header__add-button" type="text" onClick={onClick}>
             + New Clothes

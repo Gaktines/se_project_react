@@ -9,17 +9,23 @@ const ItemModal = ({ selectedCard, onClose, handleDeleteButton }) => {
           type="button"
           onClick={onClose}
         ></button>
-        <img className="modal__image" src={selectedCard.imageUrl} alt={selectedCard.name} />
+        <img
+          className="modal__image"
+          src={selectedCard.imageUrl}
+          alt={selectedCard.name}
+        />
         <div className="modal__info">
           <div className="modal__title">{selectedCard.name}</div>
           <div className="modal__weather-type">
             Weather: {selectedCard.weather}
           </div>
           <button
-          className="modal__delete"
-          type="button"
-          onClick={() => handleDeleteButton(selectedCard)}
-        >Delete Item</button>
+            className="modal__delete"
+            type="button"
+            onClick={() => handleDeleteButton(selectedCard)}
+          >
+            Delete Item
+          </button>
         </div>
       </div>
     </div>

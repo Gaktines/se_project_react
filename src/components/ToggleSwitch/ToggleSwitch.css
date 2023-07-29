@@ -75,6 +75,6 @@
   cursor: pointer;
 }
 .toggleSwitch__active {
-    color: #FFF;
-    font-size: 14px;
+  color: #fff;
+  font-size: 14px;
 }

@@ -14,7 +14,6 @@ const Profile = ({ onSelectCard, handleActiveCreateModal, clothingItems }) => {
           onSelectCard={onSelectCard}
           handleActiveCreateModal={handleActiveCreateModal}
           clothingItems={clothingItems}
-          
         />
       </div>
     </section>

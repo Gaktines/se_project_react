@@ -16,14 +16,14 @@ export const getItems = () => {
   return getItems;
 };
 
-export const postItems = ({name, link, weather}) => {
+export const postItems = ({ name, link, weather }) => {
   const postItems = fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({name, link, weather})
-}).then((res) => {
+    body: JSON.stringify({ name, link, weather }),
+  }).then((res) => {
     if (res.ok) {
       return res.json();
     } else {
@@ -37,7 +37,7 @@ export const deleteItems = (selectedCard) => {
   const deleteItems = fetch(`${baseUrl}/items/${selectedCard.id} `, {
     method: "DELETE",
     headers: {
-        "Content-Type": "application/json",
+      "Content-Type": "application/json",
     },
   }).then((res) => {
     if (res.ok) {
