@@ -11,6 +11,7 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
     setName(e.target.value);
   };
   const handleUrlChange = (e) => {
+    console.log(e.target.value);
     setUrl(e.target.value);
   };
   const handleWeatherChange = (e) => {

@@ -20,7 +20,8 @@ function Main({ weatherTemp, onSelectCard, clothingItems }) {
   const sortedCards = clothingItems?.filter((item) => {
     return item.weather.toLowerCase() === weatherType;
   });
-  return (
+  
+    return (
     <main className="main">
       <WeatherCard day={true} type="stormy" weatherTemp={weatherTemp.temp} />
       <section className="card__section">
