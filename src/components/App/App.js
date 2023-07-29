@@ -10,7 +10,7 @@ import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperature
 import { Switch, Route } from "react-router-dom";
 import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
-import { deleteItems, getItems, postItems } from "../../utils/Api";
+import { fetchItems, loadItems, removeItems } from "../../utils/Api";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -37,7 +37,7 @@ function App() {
 
   const onAddItem = (values) => {
     console.log(values);
-    postItems(values)
+    loadItems(values)
       .then((data) => {
         setClothingItems([data, ...clothingItems]);
         handleCloseModal();
@@ -48,7 +48,7 @@ function App() {
   };
 
   const handleDeleteButton = (cardElement) => {
-    deleteItems(cardElement)
+    removeItems(cardElement)
       .then(() => {
         const newClothingItems = clothingItems.filter((cards) => {
           return cards.id !== cardElement.id;
@@ -62,7 +62,7 @@ function App() {
   };
 
   useEffect(() => {
-    getItems()
+    fetchItems()
       .then((data) => {
         setClothingItems(data);
       })

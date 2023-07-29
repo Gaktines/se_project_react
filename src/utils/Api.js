@@ -8,7 +8,7 @@ const checkResponse = (res) => {
   }
 }
 
-export const getItems = () => {
+export const fetchItems = () => {
   const getItems = fetch(`${baseUrl}/items`, {
     method: "GET",
     headers: {
@@ -18,7 +18,7 @@ export const getItems = () => {
   return getItems;
 };
 
-export const postItems = ({ name, link, weather }) => {
+export const loadItems = ({ name, link, weather }) => {
   const postItems = fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
@@ -31,7 +31,7 @@ export const postItems = ({ name, link, weather }) => {
   return postItems;
 };
 
-export const deleteItems = (selectedCard) => {
+export const removeItems = (selectedCard) => {
   const deleteItems = fetch(`${baseUrl}/items/${selectedCard.id} `, {
     method: "DELETE",
     headers: {
