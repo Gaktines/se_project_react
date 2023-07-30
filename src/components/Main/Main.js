@@ -9,6 +9,7 @@ function Main({ weatherTemp, onSelectCard, clothingItems }) {
   const temp =
     weatherTemp?.temp?.[currentTemperatureUnit.currentTemperatureUnit];
   const weatherType = useMemo(() => {
+    if (currentTemperatureUnit.currentTemperatureUnit === "F") {
     if (temp >= 86) {
       return "hot";
     } else if (temp >= 66 && temp <= 85) {
@@ -16,6 +17,15 @@ function Main({ weatherTemp, onSelectCard, clothingItems }) {
     } else if (temp <= 65) {
       return "cold";
     }
+  } else if (currentTemperatureUnit.currentTemperatureUnit === "C") {
+    if (temp >= 30) {
+      return "hot";
+    } else if (temp >= 19 && temp <= 29) {
+      return "warm";
+    } else if (temp <= 18) {
+      return "cold";
+    }
+  }
   }, [temp]);
   const sortedCards = clothingItems?.filter((item) => {
     return item.weather.toLowerCase() === weatherType;
