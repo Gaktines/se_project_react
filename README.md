@@ -1,3 +1,6 @@
+The front-end for a project called WTWR - What to Wear.  An App that was built with React and Node.js to tell you what to wear depending on where you are at.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
