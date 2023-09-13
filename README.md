@@ -1,3 +1,5 @@
+This is an application using React to tell you what to wear depending on where you are located and the temperature where you aree at.  The link to the backend for this project is here: https://github.com/Gaktines/se_project_express.git
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

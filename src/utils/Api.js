@@ -1,4 +1,4 @@
-const baseUrl = "https://my-json-server.typicode.com/gaktines/se_project_react";
+const baseUrl = "http://localhost:3001";
 
 const checkResponse = (res) => {
   if (res.ok) {
