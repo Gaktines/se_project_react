@@ -11,6 +11,8 @@ import { Switch, Route } from "react-router-dom";
 import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import { fetchItems, loadItems, removeItems } from "../../utils/Api";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -96,13 +98,13 @@ function App() {
               clothingItems={clothingItems}
             />
           </Route>
-          <Route path="/profile">
+          <ProtectedRoute path="/profile">
             <Profile
               onSelectCard={handleItemCard}
               handleActiveCreateModal={handleActiveCreateModal}
               clothingItems={clothingItems}
             />
-          </Route>
+          </ProtectedRoute>
         </Switch>
         <Footer />
         {activeModal === "create" && (
