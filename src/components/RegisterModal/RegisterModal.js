@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import { React, useState } from "react";
 import { Redirect } from "react-router-dom";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./RegisterModal.css";
 import register from "../../auth";
 
-const RegisterModal = ({ handleCloseModal,  isOpen }) => {
+const RegisterModal = ({ handleCloseModal, isOpen }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -29,7 +29,6 @@ const RegisterModal = ({ handleCloseModal,  isOpen }) => {
     e.preventDefault();
     const { email, password, name, avatar } = this.state;
     register(email, password, name, avatar);
-  
   };
   const handleLogin = (e) => {
     e.preventDefault();

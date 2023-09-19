@@ -12,7 +12,7 @@ import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import { fetchItems, loadItems, removeItems } from "../../utils/Api";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
-import { register, signin, checkToken } from "../../auth";
+import { register, signIn, checkToken } from "../../auth";
 import RegisterModal from "../../components/RegisterModal/RegisterModal";
 import LoginModal from "../../components/LoginModal/LoginModal";
 
@@ -75,7 +75,7 @@ function App() {
   };
 
   const handleLogin = (email, password) => {
-    signin(email, password)
+    signIn(email, password)
       .then((response) => response.json())
       .then((data) => {
         if (data.jwt) {
