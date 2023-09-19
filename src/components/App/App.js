@@ -12,7 +12,9 @@ import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import { fetchItems, loadItems, removeItems } from "../../utils/Api";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
-
+import { register, signin, checkToken } from "../../auth";
+import RegisterModal from "../../components/RegisterModal/RegisterModal";
+import LoginModal from "../../components/LoginModal/LoginModal";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -63,6 +65,28 @@ function App() {
       });
   };
 
+  const handleRegisteration = () => {
+    const { email, password, name, avatar } = this.state;
+    register(email, password, name, avatar);
+    this.setState({
+      loggedIn: true
+    });
+    handleCloseModal();
+  };
+
+  const handleLogin = (email, password) => {
+    signin(email, password)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.jwt) {
+          localStorage.setItem("jwt", data.jwt);
+          return data;
+        } else {
+          return;
+        }
+      });
+  };
+
   useEffect(() => {
     fetchItems()
       .then((data) => {
@@ -84,6 +108,10 @@ function App() {
       });
   }, []);
 
+  useEffect(() => {
+    checkToken().then((jwt) => {});
+  }, []);
+
   return (
     <CurrentTemperatureUnitContext.Provider
       value={{ currentTemperatureUnit, handleToggleSwitchChange }}
@@ -98,7 +126,7 @@ function App() {
               clothingItems={clothingItems}
             />
           </Route>
-          <ProtectedRoute path="/profile">
+          <ProtectedRoute path="/profile" loggedIn={this.state.loggedIn} component={Profile}>
             <Profile
               onSelectCard={handleItemCard}
               handleActiveCreateModal={handleActiveCreateModal}
@@ -119,6 +147,20 @@ function App() {
             selectedCard={selectedCard}
             onClose={handleCloseModal}
             handleDeleteButton={handleDeleteButton}
+          />
+        )}
+        {activeModal === "create" && (
+          <RegisterModal
+            handleCloseModal={handleCloseModal}
+            isOpen={activeModal === "create"}
+            handleRegisteration={handleRegisteration}
+          />
+        )}
+        {activeModal === "login" && (
+          <LoginModal
+            handleCloseModal={handleCloseModal}
+            isOpen={activeModal === "login"}
+            handleLogin={handleLogin}
           />
         )}
       </div>

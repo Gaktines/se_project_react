@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:3001";
+export const baseUrl = "http://localhost:3001";
 
 // signup
 export const signUp = ({ name, avatar, email, password }) => {
@@ -24,7 +24,7 @@ export const signIn = ({ email, password }) => {
 
 // register
 export const register = (email, password, name, avatar) => {
-  return fetch(`${BASE_URL}/auth/local/register`, {
+  return fetch(`${baseUrl}/auth/local/register`, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -41,4 +41,15 @@ export const register = (email, password, name, avatar) => {
       return e;
     }
   });
+};
+
+// check token
+export const checkToken = () => {
+ return fetch(`${baseUrl}/local`, {
+  method: "GET",
+  headers: {
+    "Content-Type": "application/json",
+    authorization: `Bearer ${token}`,
+  }
+});
 };

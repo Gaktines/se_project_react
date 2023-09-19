@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./RegisterModal.css";
+import register from "../../auth";
 
 const RegisterModal = ({ handleCloseModal,  isOpen }) => {
   const [email, setEmail] = useState("");
@@ -27,7 +28,7 @@ const RegisterModal = ({ handleCloseModal,  isOpen }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { email, password, name, avatar } = this.state;
-    auth.register(email, password, name, avatar);
+    register(email, password, name, avatar);
   
   };
   const handleLogin = (e) => {
