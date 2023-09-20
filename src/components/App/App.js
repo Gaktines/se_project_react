@@ -15,6 +15,7 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import { register, signIn, checkToken } from "../../auth";
 import RegisterModal from "../../components/RegisterModal/RegisterModal";
 import LoginModal from "../../components/LoginModal/LoginModal";
+import { AppContext } from "../AppContext";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -22,6 +23,9 @@ function App() {
   const [temp, setTemp] = useState(0);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [userData, setUserData] = useState(null);
+  const appContextValue = { state: { loggedIn, userData } };
 
   const handleItemCard = (card) => {
     setActiveModal("preview");
@@ -69,7 +73,7 @@ function App() {
     const { email, password, name, avatar } = this.state;
     register(email, password, name, avatar);
     this.setState({
-      loggedIn: true
+      loggedIn: true,
     });
     handleCloseModal();
   };
@@ -109,7 +113,13 @@ function App() {
   }, []);
 
   useEffect(() => {
-    checkToken().then((jwt) => {});
+    checkToken().then((jwt) => {
+      if (localStorage.getItem(jwt)) {
+        console.log("Token Found: " + localStorage.getItem(jwt));
+      } else {
+        console.log("Token not Found");
+      }
+    });
   }, []);
 
   return (
@@ -126,13 +136,15 @@ function App() {
               clothingItems={clothingItems}
             />
           </Route>
-          <ProtectedRoute path="/profile" loggedIn={this.state.loggedIn} component={Profile}>
-            <Profile
-              onSelectCard={handleItemCard}
-              handleActiveCreateModal={handleActiveCreateModal}
-              clothingItems={clothingItems}
-            />
-          </ProtectedRoute>
+          <AppContext.Provider value={appContextValue}>
+            <ProtectedRoute path="/profile">
+              <Profile
+                onSelectCard={handleItemCard}
+                handleActiveCreateModal={handleActiveCreateModal}
+                clothingItems={clothingItems}
+              />
+            </ProtectedRoute>
+          </AppContext.Provider>
         </Switch>
         <Footer />
         {activeModal === "create" && (
