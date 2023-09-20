@@ -1,8 +1,8 @@
-import { React, useState } from "react";
+import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./RegisterModal.css";
-import register from "../../auth";
+import { register } from "../../auth";
 
 const RegisterModal = ({ handleCloseModal, isOpen }) => {
   const [email, setEmail] = useState("");
