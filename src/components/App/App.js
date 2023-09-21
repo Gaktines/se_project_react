@@ -16,6 +16,7 @@ import { register, signIn, checkToken } from "../../auth";
 import RegisterModal from "../../components/RegisterModal/RegisterModal";
 import LoginModal from "../../components/LoginModal/LoginModal";
 import { AppContext } from "../AppContext";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -25,6 +26,7 @@ function App() {
   const [clothingItems, setClothingItems] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
   const [userData, setUserData] = useState(null);
+  const [currentUser, setCurrentUser] = useState(null);
   const appContextValue = { state: { loggedIn, userData } };
 
   const handleItemCard = (card) => {
@@ -75,6 +77,8 @@ function App() {
     this.setState({
       loggedIn: true,
     });
+    setUserData;
+    setCurrentUser();
     handleCloseModal();
   };
 
@@ -129,13 +133,15 @@ function App() {
       <div>
         <Header onClick={handleActiveCreateModal} temp={temp} />
         <Switch>
-          <Route exact path="/">
-            <Main
-              weatherTemp={temp}
-              onSelectCard={handleItemCard}
-              clothingItems={clothingItems}
-            />
-          </Route>
+          <CurrentUserContext.Provider value={currentUser} loggedIn={this.state.loggedIn}>
+            <Route exact path="/">
+              <Main
+                weatherTemp={temp}
+                onSelectCard={handleItemCard}
+                clothingItems={clothingItems}
+              />
+            </Route>
+          </CurrentUserContext.Provider>
           <AppContext.Provider value={appContextValue}>
             <ProtectedRoute path="/profile">
               <Profile
