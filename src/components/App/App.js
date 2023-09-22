@@ -77,7 +77,7 @@ function App() {
     this.setState({
       loggedIn: true,
     });
-    setUserData;
+    setUserData();
     setCurrentUser();
     handleCloseModal();
   };
@@ -130,10 +130,13 @@ function App() {
     <CurrentTemperatureUnitContext.Provider
       value={{ currentTemperatureUnit, handleToggleSwitchChange }}
     >
+      <CurrentUserContext.Provider
+          value={currentUser}
+          loggedIn="true"
+        >
       <div>
-        <Header onClick={handleActiveCreateModal} temp={temp} />
-        <Switch>
-          <CurrentUserContext.Provider value={currentUser} loggedIn={this.state.loggedIn}>
+          <Header onClick={handleActiveCreateModal} temp={temp} />
+          <Switch>
             <Route exact path="/">
               <Main
                 weatherTemp={temp}
@@ -141,17 +144,16 @@ function App() {
                 clothingItems={clothingItems}
               />
             </Route>
-          </CurrentUserContext.Provider>
-          <AppContext.Provider value={appContextValue}>
-            <ProtectedRoute path="/profile">
-              <Profile
-                onSelectCard={handleItemCard}
-                handleActiveCreateModal={handleActiveCreateModal}
-                clothingItems={clothingItems}
-              />
-            </ProtectedRoute>
-          </AppContext.Provider>
-        </Switch>
+            <AppContext.Provider value={appContextValue}>
+              <ProtectedRoute path="/profile">
+                <Profile
+                  onSelectCard={handleItemCard}
+                  handleActiveCreateModal={handleActiveCreateModal}
+                  clothingItems={clothingItems}
+                />
+              </ProtectedRoute>
+            </AppContext.Provider>
+          </Switch>
         <Footer />
         {activeModal === "create" && (
           <AddItemModal
@@ -182,6 +184,7 @@ function App() {
           />
         )}
       </div>
+      </CurrentUserContext.Provider>
     </CurrentTemperatureUnitContext.Provider>
   );
 }
