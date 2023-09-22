@@ -1,6 +1,17 @@
 import "./ItemModal.css";
 
+
+
+
 const ItemModal = ({ selectedCard, onClose, handleDeleteButton }) => {
+// Checking if the current user is the owner of the current clothing item
+//const isOwn = item.owner._id === currentUser._id;
+
+// Creating a variable which you'll then set in `className` for the delete button
+//const modalDeleteClassName = (
+ // `modal__delete ${isOwn ? 'modal__delete_visible' : 'modal__delete_hidden'}`
+//);
+
   return (
     <div className={"modal"}>
       <div className="modal__content">
@@ -20,7 +31,7 @@ const ItemModal = ({ selectedCard, onClose, handleDeleteButton }) => {
             Weather: {selectedCard.weather}
           </div>
           <button
-            className="modal__delete"
+            className="modal__deltete"
             type="button"
             onClick={() => handleDeleteButton(selectedCard)}
           >

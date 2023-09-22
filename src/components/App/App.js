@@ -17,6 +17,7 @@ import RegisterModal from "../../components/RegisterModal/RegisterModal";
 import LoginModal from "../../components/LoginModal/LoginModal";
 import { AppContext } from "../AppContext";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import UnAuthHeader from "../UnAuthHeader/UnAuthHeader";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -77,6 +78,7 @@ function App() {
     this.setState({
       loggedIn: true,
     });
+    setLoggedIn();
     setUserData();
     setCurrentUser();
     handleCloseModal();
@@ -130,21 +132,22 @@ function App() {
     <CurrentTemperatureUnitContext.Provider
       value={{ currentTemperatureUnit, handleToggleSwitchChange }}
     >
-      <CurrentUserContext.Provider
-          value={currentUser}
-          loggedIn="true"
-        >
-      <div>
-          <Header onClick={handleActiveCreateModal} temp={temp} />
-          <Switch>
-            <Route exact path="/">
-              <Main
-                weatherTemp={temp}
-                onSelectCard={handleItemCard}
-                clothingItems={clothingItems}
-              />
-            </Route>
-            <AppContext.Provider value={appContextValue}>
+      <CurrentUserContext.Provider value={currentUser} loggedIn="true">
+        <AppContext.Provider value={appContextValue}>
+          <div>
+            {loggedIn ? (
+              <Header onClick={handleActiveCreateModal} temp={temp} />
+            ) : (
+              <UnAuthHeader onClick={handleActiveCreateModal} temp={temp} />
+            )}
+            <Switch>
+              <Route exact path="/">
+                <Main
+                  weatherTemp={temp}
+                  onSelectCard={handleItemCard}
+                  clothingItems={clothingItems}
+                />
+              </Route>
               <ProtectedRoute path="/profile">
                 <Profile
                   onSelectCard={handleItemCard}
@@ -152,38 +155,38 @@ function App() {
                   clothingItems={clothingItems}
                 />
               </ProtectedRoute>
-            </AppContext.Provider>
-          </Switch>
-        <Footer />
-        {activeModal === "create" && (
-          <AddItemModal
-            handleCloseModal={handleCloseModal}
-            isOpen={activeModal === "create"}
-            onAddItem={onAddItem}
-          />
-        )}
-        {activeModal === "preview" && (
-          <ItemModal
-            selectedCard={selectedCard}
-            onClose={handleCloseModal}
-            handleDeleteButton={handleDeleteButton}
-          />
-        )}
-        {activeModal === "create" && (
-          <RegisterModal
-            handleCloseModal={handleCloseModal}
-            isOpen={activeModal === "create"}
-            handleRegisteration={handleRegisteration}
-          />
-        )}
-        {activeModal === "login" && (
-          <LoginModal
-            handleCloseModal={handleCloseModal}
-            isOpen={activeModal === "login"}
-            handleLogin={handleLogin}
-          />
-        )}
-      </div>
+            </Switch>
+            <Footer />
+            {activeModal === "create" && (
+              <AddItemModal
+                handleCloseModal={handleCloseModal}
+                isOpen={activeModal === "create"}
+                onAddItem={onAddItem}
+              />
+            )}
+            {activeModal === "preview" && (
+              <ItemModal
+                selectedCard={selectedCard}
+                onClose={handleCloseModal}
+                handleDeleteButton={handleDeleteButton}
+              />
+            )}
+            {activeModal === "create" && (
+              <RegisterModal
+                handleCloseModal={handleCloseModal}
+                isOpen={activeModal === "create"}
+                handleRegisteration={handleRegisteration}
+              />
+            )}
+            {activeModal === "login" && (
+              <LoginModal
+                handleCloseModal={handleCloseModal}
+                isOpen={activeModal === "login"}
+                handleLogin={handleLogin}
+              />
+            )}
+          </div>
+        </AppContext.Provider>
       </CurrentUserContext.Provider>
     </CurrentTemperatureUnitContext.Provider>
   );
