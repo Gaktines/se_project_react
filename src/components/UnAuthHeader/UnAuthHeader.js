@@ -18,8 +18,8 @@ const UnAuthHeader = ({ onClick }) => {
       </div>
       <div className="header__avatar-logo">
         <ToggleSwitch />
-        <Link to="/signUp">Sign Up</Link>
-        <Link to="/signIn">Log In</Link>
+        <button className="header__nav_button" type="text" onClick={onClick}>Sign Up</button>
+        <button className="header__nav_button" type="text" onClick={onClick}>Log In</button>
       </div>
     </header>
   );

@@ -124,14 +124,14 @@ function App() {
   }, []);
 
   useEffect(() => {
-    checkToken().then((jwt) => {
-      if (localStorage.getItem(jwt)) {
-        console.log("Token Found: " + localStorage.getItem(jwt));
-      } else {
+    const token = localStorage.getItem('jwt');
+    if (token) {
+      checkToken(token);
+    } else {
         console.log("Token not Found");
       }
-    });
-  }, []);
+    }, []);
+  
 
   return (
     <CurrentTemperatureUnitContext.Provider

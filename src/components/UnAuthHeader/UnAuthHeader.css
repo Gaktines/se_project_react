@@ -33,3 +33,9 @@
   .header__date {
     color: black;
   }
+
+  .header__nav_button {
+    background-color: white;
+    border: none;
+    
+  }
