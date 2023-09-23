@@ -18,6 +18,7 @@ import LoginModal from "../../components/LoginModal/LoginModal";
 import { AppContext } from "../AppContext";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import UnAuthHeader from "../UnAuthHeader/UnAuthHeader";
+import EditProfileModal from "../EditProfileModal/EditProfileModal";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -96,6 +97,10 @@ function App() {
         }
       });
   };
+
+  const handleUpdate = (name, avatar) => {
+
+  }
 
   useEffect(() => {
     fetchItems()
@@ -183,6 +188,13 @@ function App() {
                 handleCloseModal={handleCloseModal}
                 isOpen={activeModal === "login"}
                 handleLogin={handleLogin}
+              />
+            )}
+            {activeModal === "update" && (
+              <EditProfileModal
+                handleCloseModal={handleCloseModal}
+                isOpen={activeModal === "update"}
+                onClick={handleUpdate}
               />
             )}
           </div>

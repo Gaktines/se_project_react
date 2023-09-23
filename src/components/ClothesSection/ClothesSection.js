@@ -6,10 +6,12 @@ const ClothesSection = ({
   onSelectCard,
   handleActiveCreateModal,
   clothingItems,
-}) => {
+}, item, currentUser) => {
+  const isOwn = item.owner._id === currentUser._id;
   const parsedCards = clothingItems.filter((item) => {
     return item.weather;
   });
+
   return (
     <section className="clothesSection">
       <div className="clothesSection__header">
@@ -24,13 +26,13 @@ const ClothesSection = ({
       </div>
       <div className="clothesSection__cards">
         <div className="clothesSection__card-items">
-          {parsedCards.map((x) => (
+          { isOwn ? parsedCards.map((x) => (
             <ItemCard
               item={x}
               key={x.id}
               onSelectCard={onSelectCard}
             />
-          ))}
+          )):""}
         </div>
       </div>
     </section>
