@@ -40,9 +40,10 @@ const RegisterModal = ({ handleCloseModal, isOpen }) => {
       isOpen={isOpen}
       onSubmit={handleSubmit}
     >
-      <h2>Sign up</h2>
+      
+      <h2 className="modal_header">Sign up</h2>
       <label className="modal__label">
-        Email
+        Email*
         <input
           className="modal__email"
           type="email"
@@ -54,7 +55,7 @@ const RegisterModal = ({ handleCloseModal, isOpen }) => {
         ></input>
       </label>
       <label className="modal__label">
-        Password
+        Password*
         <input
           className="modal__password"
           type="text"
@@ -93,6 +94,7 @@ const RegisterModal = ({ handleCloseModal, isOpen }) => {
           onChange={handleUrlChange}
         ></input>
       </label>
+      <div className="modal__button-container">
       <button
         className="modal__submit-button"
         type="submit"
@@ -109,7 +111,9 @@ const RegisterModal = ({ handleCloseModal, isOpen }) => {
       >
         or Login
       </button>
+      </div>
     </ModalWithForm>
+
   );
 };
 

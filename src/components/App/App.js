@@ -193,7 +193,7 @@ function App() {
                 handleDeleteButton={handleDeleteButton}
               />
             )}
-            {activeModal === "create" && (
+            {activeModal === "signup" && (
               <RegisterModal
                 handleCloseModal={handleCloseModal}
                 isOpen={activeModal === "create"}

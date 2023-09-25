@@ -1,0 +1,137 @@
+@font-face {
+  font-family: Cabinet Grotesk;
+  src: "../fonts/CabinetGrotesk-Black.woff";
+}
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal__content {
+  background-color: white;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  box-sizing: border-box;
+  max-width: 498px;
+  width: 100%;
+  position: relative;
+}
+
+.modal__header {
+  color: #000;
+  font-family: Cabinet Grotesk;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  width: 52px;
+  height: 20px;
+}
+
+.modal__label {
+  color: #000;
+  font-family: Cabinet Grotesk;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  padding-top: 8px;
+  padding-bottom: 20px;
+}
+
+.modal__email {
+  color: rgba(0, 0, 0, 0.5);
+  font-family: Cabinet Grotesk;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  border: none;
+  width: 100%;
+  border-bottom: 1px solid;
+  padding-top: 20px;
+}
+
+.modal__password {
+  color: rgba(0, 0, 0, 0.5);
+  font-family: Cabinet Grotesk;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  border: none;
+  width: 100%;
+  border-bottom: 1px solid;
+  padding-top: 20px;
+}
+
+.modal__input-name {
+  color: rgba(0, 0, 0, 0.5);
+  font-family: Cabinet Grotesk;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  width: 100%;
+  border-bottom: 1px solid;
+}
+
+.modal__input-link {
+  color: rgba(0, 0, 0, 0.5);
+  font-family: Cabinet Grotesk;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  width: 100%;
+  border-bottom: 1px solid;
+}
+
+.modal__submit-button {
+  display: inline-flex;
+  padding: 8px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  bottom: 20px;
+  left: 34px;
+}
+
+.modal__submit-button:hover {
+    cursor: pointer;
+}
+
+.modal__submit-login-button {
+  color: rgba(0, 0, 0, 0.5);
+  font-family: Cabinet Grotesk;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  position: absolute;
+  bottom: 25px;
+  left: 110px;
+  background-color: white;
+  border: none;
+}
+
+.modal__submit-login-button {
+    cursor: pointer;
+}
+
+.modal__button-container {
+    display: flex;
+}
