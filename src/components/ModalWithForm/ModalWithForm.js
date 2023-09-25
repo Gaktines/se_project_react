@@ -4,8 +4,8 @@ const ModalWithForm = ({
   children,
   name,
   onClose,
-  title = "New Garment",
-  buttonText = "Add Garment",
+  title,
+  buttonText,
   isOpen,
   onSubmit,
 }) => {

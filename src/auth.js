@@ -1,7 +1,7 @@
 export const baseUrl = "http://localhost:3001";
 
 // signup
-export const signUp = ({ name, avatar, email, password }) => {
+export const signup = ({ name, avatar, email, password }) => {
   fetch(`${baseUrl}/signup`, {
     method: "POST",
     headers: {
@@ -12,7 +12,7 @@ export const signUp = ({ name, avatar, email, password }) => {
 };
 
 // signin
-export const signIn = ({ email, password }) => {
+export const signin = ({ email, password }) => {
   fetch(`${baseUrl}/signin`, {
     method: "POST",
     headers: {

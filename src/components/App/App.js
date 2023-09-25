@@ -12,7 +12,7 @@ import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import { fetchItems, loadItems, removeItems } from "../../utils/Api";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
-import { register, signIn, checkToken } from "../../auth";
+import { register, signin, checkToken } from "../../auth";
 import RegisterModal from "../../components/RegisterModal/RegisterModal";
 import LoginModal from "../../components/LoginModal/LoginModal";
 import { AppContext } from "../AppContext";
@@ -47,6 +47,14 @@ function App() {
     setActiveModal("");
   };
 
+  const handleSignupModal= () => {
+    setActiveModal("signup");
+  };
+
+  const handkeLogInModal = () => {
+    setActiveModal("login");
+  };
+
   const onAddItem = (values) => {
     console.log(values);
     loadItems(values)
@@ -75,18 +83,27 @@ function App() {
 
   const handleRegisteration = () => {
     const { email, password, name, avatar } = this.state;
-    register(email, password, name, avatar);
+    register(email, password, name, avatar)
+    .then(() => {
+      this.setState({
+        loggedIn: true,
+      });
+      setLoggedIn();
+      setUserData();
+      setCurrentUser();
+      handleCloseModal();
+    })
+    .catch((error) => {
+      console.error(error);
+      // Handle registration error here
+    });;
     this.setState({
       loggedIn: true,
     });
-    setLoggedIn();
-    setUserData();
-    setCurrentUser();
-    handleCloseModal();
-  };
+  }
 
   const handleLogin = (email, password) => {
-    signIn(email, password)
+    signin(email, password)
       .then((response) => response.json())
       .then((data) => {
         if (data.jwt) {
@@ -143,7 +160,7 @@ function App() {
             {loggedIn ? (
               <Header onClick={handleActiveCreateModal} temp={temp} />
             ) : (
-              <UnAuthHeader onClick={handleActiveCreateModal} temp={temp} />
+              <UnAuthHeader onClick={handleActiveCreateModal} onClickLogin={handkeLogInModal} onClickSignup={handleSignupModal} temp={temp} />
             )}
             <Switch>
               <Route exact path="/">

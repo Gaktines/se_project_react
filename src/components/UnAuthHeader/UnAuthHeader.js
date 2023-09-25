@@ -3,7 +3,7 @@ import wtwrLogo from "../../images/wtwrLogo.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
 
-const UnAuthHeader = ({ onClick }) => {
+const UnAuthHeader = ({ onClickSignup, onClickLogin }) => {
     const currentDate = new Date().toLocaleString("default", {
         month: "long",
         date: "numeric",
@@ -18,8 +18,8 @@ const UnAuthHeader = ({ onClick }) => {
       </div>
       <div className="header__avatar-logo">
         <ToggleSwitch />
-        <button className="header__nav_button" type="text" onClick={onClick}>Sign Up</button>
-        <button className="header__nav_button" type="text" onClick={onClick}>Log In</button>
+        <button className="header__nav_button" type="text" onClick={onClickSignup}>Sign Up</button>
+        <button className="header__nav_button" type="text" onClick={onClickLogin}>Log In</button>
       </div>
     </header>
   );
