@@ -60,7 +60,7 @@
     border: none;
   }
   
-  .modal__submit-login-button {
+  .modal__submit-login-button:hover {
       cursor: pointer;
   }
   
@@ -68,3 +68,6 @@
       display: flex;
   }
   
+  .modal__submit-register-button:hover {
+    cursor: pointer;
+  }

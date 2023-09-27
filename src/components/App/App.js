@@ -81,8 +81,7 @@ function App() {
       });
   };
 
-  const handleRegisteration = () => {
-    const { email, password, name, avatar } = this.state;
+  const handleRegisteration = (email, password, name, avatar) => {
     register(email, password, name, avatar)
     .then(() => {
       this.setState({

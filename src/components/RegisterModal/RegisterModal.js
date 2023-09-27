@@ -28,10 +28,16 @@ const RegisterModal = ({ handleCloseModal, isOpen }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     register(email, password, name, avatar);
+    handleCloseModal();
   };
-  const handleLogin = (e) => {
+  const redirect = (e) => {
     e.preventDefault();
     return <Redirect to="/login" />;
+  }
+  const handleLogin = (e) => {
+    e.preventDefault();
+    redirect();
+    handleCloseModal();
   };
   return (
     <ModalWithForm
