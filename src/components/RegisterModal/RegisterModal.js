@@ -27,7 +27,6 @@ const RegisterModal = ({ handleCloseModal, isOpen }) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { email, password, name, avatar } = this.state;
     register(email, password, name, avatar);
   };
   const handleLogin = (e) => {

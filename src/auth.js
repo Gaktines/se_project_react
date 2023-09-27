@@ -24,7 +24,7 @@ export const signin = ({ email, password }) => {
 
 // register
 export const register = (email, password, name, avatar, token) => {
-  return fetch(`${baseUrl}/auth/local/register`, {
+  return fetch(`${baseUrl}/signup`, {
     method: "POST",
     headers: {
       Accept: "application/json",
