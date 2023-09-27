@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
+import React, { useState, useRouter } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./RegisterModal.css";
 import { register } from "../../auth";
+
 
 const RegisterModal = ({ handleCloseModal, isOpen }) => {
   const [email, setEmail] = useState("");
@@ -30,13 +30,11 @@ const RegisterModal = ({ handleCloseModal, isOpen }) => {
     register(email, password, name, avatar);
     handleCloseModal();
   };
-  const redirect = (e) => {
+  
+  const HandleLogin = (e) => {
+    const router = useRouter();
     e.preventDefault();
-    return <Redirect to="/login" />;
-  }
-  const handleLogin = (e) => {
-    e.preventDefault();
-    redirect();
+    router.push("/login");
     handleCloseModal();
   };
   return (
@@ -112,7 +110,7 @@ const RegisterModal = ({ handleCloseModal, isOpen }) => {
         className="modal__submit-login-button"
         type="button"
         name="button"
-        onChange={handleLogin}
+        onChange={HandleLogin}
       >
         or Login
       </button>
