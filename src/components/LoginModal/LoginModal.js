@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect } from 'react-router-dom';
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./LoginModal.css";
 import { signin } from "../../auth";
 
-const LoginModal = ({ handleCloseModal,  isOpen }) => {
+const LoginModal = ({ handleCloseModal,  isOpen, onClickSignup }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
 
   const handleEmailChange = (e) => {
     console.log(e.target.value);
@@ -22,17 +23,12 @@ const LoginModal = ({ handleCloseModal,  isOpen }) => {
     signin({ email, password });
     handleCloseModal();
   };
-
-  const redirect = (e) => {
-    e.preventDefault();
-    return <Redirect to="/signup" />;
-  }
+  
   const handleRegister = (e) => {
     e.preventDefault();
-    redirect();
-    handleCloseModal();
-    
+    return <Redirect to="/signup" />;
   };
+
   return (
     <ModalWithForm
       onClose={handleCloseModal}
@@ -80,6 +76,7 @@ const LoginModal = ({ handleCloseModal,  isOpen }) => {
           type="button"
           name="button"
           onChange={handleRegister}
+          onClick={onClickSignup}
         >
           or Register
         </button>

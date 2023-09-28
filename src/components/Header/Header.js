@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const Header = ({ onClick }) => {
   const currentDate = new Date().toLocaleString("default", {
-    month: "long",
+    month: "short",
     date: "numeric",
 });
   return (

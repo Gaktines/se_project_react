@@ -106,6 +106,7 @@ function App() {
       .then((response) => response.json())
       .then((data) => {
         if (data.jwt) {
+          setLoggedIn(true);
           localStorage.setItem("jwt", data.jwt);
           return data;
         } else {

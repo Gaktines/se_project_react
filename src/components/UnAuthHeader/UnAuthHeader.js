@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const UnAuthHeader = ({ onClickSignup, onClickLogin }) => {
     const currentDate = new Date().toLocaleString("default", {
-        month: "long",
+        month: "short",
         date: "numeric",
     });
   return (
