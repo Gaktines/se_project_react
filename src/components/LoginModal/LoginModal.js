@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { Redirect } from 'react-router-dom';
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./LoginModal.css";
 import { signin } from "../../auth";
+import { set } from "mongoose";
 
 const LoginModal = ({ handleCloseModal,  isOpen, onClickSignup }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { activeModal, setActiveModal } = useState("");
 
 
   const handleEmailChange = (e) => {
@@ -23,12 +24,11 @@ const LoginModal = ({ handleCloseModal,  isOpen, onClickSignup }) => {
     signin({ email, password });
     handleCloseModal();
   };
-  
+
   const handleRegister = (e) => {
     e.preventDefault();
-    return <Redirect to="/signup" />;
-  };
-
+    setActiveModal("/signup");
+  }
   return (
     <ModalWithForm
       onClose={handleCloseModal}

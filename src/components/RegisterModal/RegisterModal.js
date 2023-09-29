@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Redirect } from 'react-router-dom';
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./RegisterModal.css";
 import { register } from "../../auth";
@@ -10,6 +9,7 @@ const RegisterModal = ({ handleCloseModal, isOpen, onClickLogin}) => {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [avatar, setUrl] = useState("");
+  const { activeModal, setActiveModal } = useState("");
 
   const handleEmailChange = (e) => {
     console.log(e.target.value);
@@ -33,8 +33,8 @@ const RegisterModal = ({ handleCloseModal, isOpen, onClickLogin}) => {
   };
   const handleLogin = (e) => {
     e.preventDefault();
-    return <Redirect to="/login" />;
-  };
+    setActiveModal("/signin");
+  }
   return (
     <ModalWithForm
       onClose={handleCloseModal}
