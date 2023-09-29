@@ -2,13 +2,11 @@ import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./LoginModal.css";
 import { signin } from "../../auth";
-import { set } from "mongoose";
 
-const LoginModal = ({ handleCloseModal,  isOpen, onClickSignup }) => {
+
+const LoginModal = ({ handleCloseModal, isOpen, setActiveModal }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { activeModal, setActiveModal } = useState("");
-
 
   const handleEmailChange = (e) => {
     console.log(e.target.value);
@@ -25,10 +23,9 @@ const LoginModal = ({ handleCloseModal,  isOpen, onClickSignup }) => {
     handleCloseModal();
   };
 
-  const handleRegister = (e) => {
-    e.preventDefault();
-    setActiveModal("/signup");
-  }
+  const onClickSignup = () => {
+    setActiveModal("signup");
+  };
   return (
     <ModalWithForm
       onClose={handleCloseModal}
@@ -75,7 +72,6 @@ const LoginModal = ({ handleCloseModal,  isOpen, onClickSignup }) => {
           className="modal__submit-register-button"
           type="button"
           name="button"
-          onChange={handleRegister}
           onClick={onClickSignup}
         >
           or Register

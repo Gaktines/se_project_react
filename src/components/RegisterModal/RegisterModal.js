@@ -4,12 +4,11 @@ import "./RegisterModal.css";
 import { register } from "../../auth";
 
 
-const RegisterModal = ({ handleCloseModal, isOpen, onClickLogin}) => {
+const RegisterModal = ({ handleCloseModal, isOpen, setActiveModal}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [avatar, setUrl] = useState("");
-  const { activeModal, setActiveModal } = useState("");
 
   const handleEmailChange = (e) => {
     console.log(e.target.value);
@@ -31,10 +30,9 @@ const RegisterModal = ({ handleCloseModal, isOpen, onClickLogin}) => {
     register(email, password, name, avatar);
     handleCloseModal();
   };
-  const handleLogin = (e) => {
-    e.preventDefault();
-    setActiveModal("/signin");
-  }
+  const onClickLogin = () => {
+    setActiveModal("login");
+  };
   return (
     <ModalWithForm
       onClose={handleCloseModal}
@@ -108,7 +106,6 @@ const RegisterModal = ({ handleCloseModal, isOpen, onClickLogin}) => {
         className="modal__submit-login-button"
         type="button"
         name="button"
-        onChange={handleLogin}
         onClick={onClickLogin}
       >
         or Login

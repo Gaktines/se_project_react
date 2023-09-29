@@ -20,6 +20,7 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import UnAuthHeader from "../UnAuthHeader/UnAuthHeader";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 
+
 function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
@@ -51,7 +52,7 @@ function App() {
     setActiveModal("signup");
   };
 
-  const handkeLogInModal = () => {
+  const handleLogInModal = () => {
     setActiveModal("login");
   };
 
@@ -158,9 +159,9 @@ function App() {
         <AppContext.Provider value={appContextValue}>
           <div>
             {loggedIn ? (
-              <Header onClick={handleActiveCreateModal} temp={temp} />
+              <Header onClick={handleActiveCreateModal} temp={temp} setLoggedIn={"true"}/>
             ) : (
-              <UnAuthHeader onClick={handleActiveCreateModal} onClickLogin={handkeLogInModal} onClickSignup={handleSignupModal} temp={temp} />
+              <UnAuthHeader onClick={handleActiveCreateModal} onClickLogin={handleLogInModal} onClickSignup={handleSignupModal} temp={temp} />
             )}
             <Switch>
               <Route exact path="/">
@@ -198,6 +199,7 @@ function App() {
                 handleCloseModal={handleCloseModal}
                 isOpen={activeModal === "create"}
                 handleRegisteration={handleRegisteration}
+                setActiveModal={setActiveModal}
               />
             )}
             {activeModal === "login" && (
@@ -205,13 +207,16 @@ function App() {
                 handleCloseModal={handleCloseModal}
                 isOpen={activeModal === "login"}
                 handleLogin={handleLogin}
+                onClickLogin={handleLogInModal}
+                setActiveModal={setActiveModal}
               />
             )}
             {activeModal === "update" && (
               <EditProfileModal
                 handleCloseModal={handleCloseModal}
                 isOpen={activeModal === "update"}
-                onClick={handleUpdate}
+                handleUpdate={handleUpdate}
+                onClickSignup={handleSignupModal}
               />
             )}
           </div>
