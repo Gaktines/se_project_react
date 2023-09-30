@@ -85,10 +85,7 @@ function App() {
   const handleRegistration = (email, password, name, avatar) => {
     register(email, password, name, avatar)
     .then(() => {
-      this.setState({
-        loggedIn: true,
-      });
-      setLoggedIn();
+          setLoggedIn(true);
       setUserData();
       setCurrentUser();
       handleCloseModal();
@@ -96,11 +93,11 @@ function App() {
     .catch((error) => {
       console.error(error);
       // Handle registration error here
-    });;
-    this.setState({
-      loggedIn: true,
     });
-  }
+    setLoggedIn(true);
+    };
+  
+  
 
   const handleLogin = (email, password) => {
     signin(email, password)
