@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./RegisterModal.css";
-import { register } from "../../auth";
 
 
-const RegisterModal = ({ handleCloseModal, isOpen, setActiveModal}) => {
+const RegisterModal = ({ handleCloseModal, isOpen, setActiveModal, handleRegistration}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -27,7 +26,7 @@ const RegisterModal = ({ handleCloseModal, isOpen, setActiveModal}) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    register(email, password, name, avatar);
+    handleRegistration(email, password, name, avatar);
     handleCloseModal();
   };
   const onClickLogin = () => {

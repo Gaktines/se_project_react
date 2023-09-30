@@ -82,7 +82,7 @@ function App() {
       });
   };
 
-  const handleRegisteration = (email, password, name, avatar) => {
+  const handleRegistration = (email, password, name, avatar) => {
     register(email, password, name, avatar)
     .then(() => {
       this.setState({
@@ -106,9 +106,9 @@ function App() {
     signin(email, password)
       .then((response) => response.json())
       .then((data) => {
-        if (data.jwt) {
+        if (data.token) {
           setLoggedIn(true);
-          localStorage.setItem("jwt", data.jwt);
+          localStorage.setItem("jwt", data.token);
           return data;
         } else {
           return;
@@ -155,11 +155,11 @@ function App() {
     <CurrentTemperatureUnitContext.Provider
       value={{ currentTemperatureUnit, handleToggleSwitchChange }}
     >
-      <CurrentUserContext.Provider value={currentUser} loggedIn="true">
+      <CurrentUserContext.Provider value={currentUser} >
         <AppContext.Provider value={appContextValue}>
           <div>
             {loggedIn ? (
-              <Header onClick={handleActiveCreateModal} temp={temp} setLoggedIn={"true"}/>
+              <Header onClick={handleActiveCreateModal} temp={temp} />
             ) : (
               <UnAuthHeader onClick={handleActiveCreateModal} onClickLogin={handleLogInModal} onClickSignup={handleSignupModal} temp={temp} />
             )}
@@ -198,7 +198,7 @@ function App() {
               <RegisterModal
                 handleCloseModal={handleCloseModal}
                 isOpen={activeModal === "create"}
-                handleRegisteration={handleRegisteration}
+                handleRegisteration={handleRegistration}
                 setActiveModal={setActiveModal}
               />
             )}
