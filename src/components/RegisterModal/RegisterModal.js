@@ -26,6 +26,7 @@ const RegisterModal = ({ handleCloseModal, isOpen, setActiveModal, handleRegistr
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(handleRegistration);
     handleRegistration(email, password, name, avatar);
     handleCloseModal();
   };
