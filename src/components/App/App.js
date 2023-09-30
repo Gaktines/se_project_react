@@ -198,7 +198,7 @@ function App() {
               <RegisterModal
                 handleCloseModal={handleCloseModal}
                 isOpen={activeModal === "create"}
-                handleRegisteration={handleRegistration}
+                handleRegistration={handleRegistration}
                 setActiveModal={setActiveModal}
               />
             )}
