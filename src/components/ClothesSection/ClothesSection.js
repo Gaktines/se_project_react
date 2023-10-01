@@ -1,12 +1,14 @@
-import React from "react";
+import React, {useContext} from "react";
 import "./ClothesSection.css";
 import ItemCard from "../ItemCard/ItemCard";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const ClothesSection = ({
   onSelectCard,
   handleActiveCreateModal,
-  clothingItems,
-}, item, currentUser) => {
+  clothingItems, item
+}) => {
+  const currentUser = useContext(CurrentUserContext);
   const isOwn = item.owner._id === currentUser._id;
   const parsedCards = clothingItems.filter((item) => {
     return item.weather;

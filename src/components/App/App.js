@@ -20,7 +20,6 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import UnAuthHeader from "../UnAuthHeader/UnAuthHeader";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 
-
 function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
@@ -49,7 +48,7 @@ function App() {
     setActiveModal("");
   };
 
-  const handleSignupModal= () => {
+  const handleSignupModal = () => {
     setActiveModal("signup");
   };
 
@@ -85,38 +84,40 @@ function App() {
 
   const handleRegistration = (email, password, name, avatar) => {
     register(email, password, name, avatar)
-    .then((res) => {
-          setLoggedIn(true);
-      setUserData();
-      setCurrentUser(res);
-      handleCloseModal();
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+      .then((res) => {
+        console.log(res);
+        setLoggedIn(true);
+        setCurrentUser(res);
+        handleCloseModal();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
     setLoggedIn(true);
-    };
-  
-  
+  };
 
   const handleLogin = (email, password) => {
     signin(email, password)
       .then((response) => response.json())
       .then((data) => {
         if (data.token) {
-          setLoggedIn(true);
-          history.push("/profile");
           localStorage.setItem("jwt", data.token);
-          return data;
+          console.log(data);
+          checkToken()
+          .then((res) => {
+            console.log(res);
+            setLoggedIn(true);
+            setCurrentUser(res);
+            handleCloseModal();
+            history.push("/profile");
+          })
         } else {
           return;
         }
       });
   };
 
-  const handleUpdate = (name, avatar) => {
-
-  }
+  const handleUpdate = (name, avatar) => {};
 
   useEffect(() => {
     fetchItems()
@@ -140,37 +141,49 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const token = localStorage.getItem('jwt');
+    const token = localStorage.getItem("jwt");
     if (token) {
-      checkToken(token) 
-      .then((data) => {
-        console.log(data)
-        setCurrentUser(data.user); // Set the user data in your component state
-        setLoggedIn(true);
-        
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+      checkToken(token);
+    } else {
+      console.log("Token not Found");
+    }
+  }, []);
+
+  useEffect(() => {
+    const token = localStorage.getItem("jwt");
+    if (token) {
+      checkToken(token)
+        .then((data) => {
+          console.log(data);
+          setCurrentUser(data.user); // Set the user data in your component state
+          setLoggedIn(true);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     } else {
       localStorage.removeItem("jwt");
       setLoggedIn(false);
-        console.log("Token not Found");
-      }
-    }, [loggedIn, history]);
-  
+      console.log("Token not Found");
+    }
+  }, [loggedIn, history]);
 
   return (
     <CurrentTemperatureUnitContext.Provider
       value={{ currentTemperatureUnit, handleToggleSwitchChange }}
     >
-      <CurrentUserContext.Provider value={currentUser} >
+      <CurrentUserContext.Provider value={currentUser}>
         <AppContext.Provider value={appContextValue}>
           <div>
             {loggedIn ? (
               <Header onClick={handleActiveCreateModal} temp={temp} />
             ) : (
-              <UnAuthHeader onClick={handleActiveCreateModal} onClickLogin={handleLogInModal} onClickSignup={handleSignupModal} temp={temp} />
+              <UnAuthHeader
+                onClick={handleActiveCreateModal}
+                onClickLogin={handleLogInModal}
+                onClickSignup={handleSignupModal}
+                temp={temp}
+              />
             )}
             <Switch>
               <Route exact path="/">

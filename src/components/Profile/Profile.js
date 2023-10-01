@@ -3,10 +3,10 @@ import "./Profile.css";
 import SideBar from "../SideBar/SideBar";
 import ClothesSection from "../ClothesSection/ClothesSection";
 
-const Profile = ({ onSelectCard, handleActiveCreateModal, clothingItems, currentUser }) => {
+const Profile = ({ onSelectCard, handleActiveCreateModal, clothingItems }) => {
   return (
     <section className="profile">
-        <SideBar {...currentUser}/>
+        <SideBar />
         <ClothesSection
           onSelectCard={onSelectCard}
           handleActiveCreateModal={handleActiveCreateModal}
