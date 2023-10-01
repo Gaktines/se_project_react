@@ -4,13 +4,14 @@ import avatar from "../../images/avatar.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { useContext } from "react";
 
 const Header = ({ onClick }) => {
   const currentDate = new Date().toLocaleString("default", {
     month: "short",
     date: "numeric",
 });
-const currentUser = CurrentUserContext;
+const currentUser = useContext(CurrentUserContext);
 console.log(currentUser);
   return (
     <header className="header">

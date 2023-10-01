@@ -13,7 +13,7 @@ export const signup = ({ name, avatar, email, password }) => {
 
 // signin
 export const signin = ({ email, password }) => {
-  fetch(`${baseUrl}/signin`, {
+  return fetch(`${baseUrl}/signin`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

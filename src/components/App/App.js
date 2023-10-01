@@ -7,7 +7,7 @@ import ItemModal from "../ItemModal/ItemModal";
 import { sortWeatherData } from "../../utils/weatherApi";
 import { getWeatherForecast } from "../../utils/weatherApi";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, useHistory } from "react-router-dom";
 import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import { fetchItems, loadItems, removeItems } from "../../utils/Api";
@@ -31,6 +31,7 @@ function App() {
   const [userData, setUserData] = useState(null);
   const [currentUser, setCurrentUser] = useState(null);
   const appContextValue = { state: { loggedIn, userData } };
+  const history = useHistory();
 
   const handleItemCard = (card) => {
     setActiveModal("preview");
@@ -84,15 +85,14 @@ function App() {
 
   const handleRegistration = (email, password, name, avatar) => {
     register(email, password, name, avatar)
-    .then(() => {
+    .then((res) => {
           setLoggedIn(true);
       setUserData();
-      setCurrentUser();
+      setCurrentUser(res);
       handleCloseModal();
     })
     .catch((error) => {
       console.error(error);
-      // Handle registration error here
     });
     setLoggedIn(true);
     };
@@ -133,19 +133,30 @@ function App() {
         const temperature = sortWeatherData(data);
         setTemp(temperature);
       })
-      .catch((err) => {
-        console.error(err);
+      .catch((error) => {
+        console.error(error);
       });
   }, []);
 
   useEffect(() => {
     const token = localStorage.getItem('jwt');
     if (token) {
-      checkToken(token);
+      checkToken(token) 
+      .then((data) => {
+        console.log(data)
+        setCurrentUser(data.user); // Set the user data in your component state
+        setLoggedIn(true);
+        history.push("/profile");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
     } else {
+      localStorage.removeItem("jwt");
+      setLoggedIn(false);
         console.log("Token not Found");
       }
-    }, []);
+    }, [loggedIn, history]);
   
 
   return (
