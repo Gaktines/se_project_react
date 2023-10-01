@@ -2,7 +2,8 @@ import React from "react";
 import "./SideBar.css";
 import avatar from "../../images/avatar.svg";
 
-const SideBar = (currentUser) => {
+const SideBar = ({currentUser}) => {
+  console.log(currentUser);
   return (
     <div className="sideBar">
         <img className="sideBar__avatar" src={avatar} alt="avatar" placeholder=""/>

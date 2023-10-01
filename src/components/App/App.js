@@ -105,6 +105,7 @@ function App() {
       .then((data) => {
         if (data.token) {
           setLoggedIn(true);
+          history.push("/profile");
           localStorage.setItem("jwt", data.token);
           return data;
         } else {
@@ -146,7 +147,7 @@ function App() {
         console.log(data)
         setCurrentUser(data.user); // Set the user data in your component state
         setLoggedIn(true);
-        history.push("/profile");
+        
       })
       .catch((error) => {
         console.error(error);
