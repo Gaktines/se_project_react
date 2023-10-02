@@ -8,6 +8,7 @@ const ClothesSection = ({
   handleActiveCreateModal,
   clothingItems, item
 }) => {
+  console.log(item);
   const currentUser = useContext(CurrentUserContext);
   const isOwn = item.owner._id === currentUser._id;
   const parsedCards = clothingItems.filter((item) => {

@@ -1,4 +1,7 @@
+import { checkResponse } from "./utils/Api";
+
 export const baseUrl = "http://localhost:3001";
+
 
 // signup
 export const signup = ({ name, avatar, email, password }) => {
@@ -51,5 +54,6 @@ export const checkToken = (token) => {
     "Content-Type": "application/json",
     authorization: `Bearer ${token}`,
   }
-});
+})
+.then(checkResponse);
 };
