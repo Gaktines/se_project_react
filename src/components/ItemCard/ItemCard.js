@@ -1,6 +1,13 @@
+import React, {useContext} from "react";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import "./ItemCard.css";
 
 const ItemCard = ({ item, onSelectCard }) => {
+  const currentUser = useContext(CurrentUserContext);
+  const isOwn = item.owner._id === currentUser._id;
+  const itemDeleteButtonClassName = (
+    `item__delete-button ${isOwn ? 'item__delete-button_visible' : 'item__delete-button_hidden'}`
+  );
   return (
     <div>
       <div className="card__title">{item.name}</div>
@@ -10,6 +17,7 @@ const ItemCard = ({ item, onSelectCard }) => {
         alt={item.name}
         onClick={() => onSelectCard(item)}
       />
+      <button className={itemDeleteButtonClassName}>Delete item</button>
     </div>
   );
 };

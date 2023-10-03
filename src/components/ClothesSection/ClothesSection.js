@@ -1,18 +1,24 @@
-import React, {useContext} from "react";
+import React from "react";
 import "./ClothesSection.css";
 import ItemCard from "../ItemCard/ItemCard";
-import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+
 
 const ClothesSection = ({
   onSelectCard,
   handleActiveCreateModal,
-  clothingItems, clothingItem
-}) => {
-  console.log(clothingItem);
-  const currentUser = useContext(CurrentUserContext);
-  const isOwn = clothingItem.owner._id === currentUser._id;
+  clothingItems
+}, currentUser) => {
+  
+  
+  
   const parsedCards = clothingItems.filter((item) => {
+    const isOwn = item.owner._id === currentUser._id;
+    if(isOwn) {
     return item.weather;
+    }else{
+      return "";
+    }
+    
   });
 
   return (
@@ -29,13 +35,13 @@ const ClothesSection = ({
       </div>
       <div className="clothesSection__cards">
         <div className="clothesSection__card-items">
-          { isOwn ? parsedCards.map((x) => (
+          {parsedCards.map((x) => (
             <ItemCard
               item={x}
               key={x.id}
               onSelectCard={onSelectCard}
             />
-          )):""}
+          ))}
         </div>
       </div>
     </section>
