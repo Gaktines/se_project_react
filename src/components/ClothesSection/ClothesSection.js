@@ -6,11 +6,11 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 const ClothesSection = ({
   onSelectCard,
   handleActiveCreateModal,
-  clothingItems, item
+  clothingItems, clothingItem
 }) => {
-  console.log(item);
+  console.log(clothingItem);
   const currentUser = useContext(CurrentUserContext);
-  const isOwn = item.owner._id === currentUser._id;
+  const isOwn = clothingItem.owner._id === currentUser._id;
   const parsedCards = clothingItems.filter((item) => {
     return item.weather;
   });

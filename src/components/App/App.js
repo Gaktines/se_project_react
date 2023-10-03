@@ -101,16 +101,12 @@ function App() {
       .then((response) => response.json())
       .then((data) => {
         if (data.token) {
-          localStorage.setItem("jwt", data.token);
-          console.log(data);
-          checkToken()
-          .then((res) => {
-            console.log(res);
+          localStorage.setItem("jwt", data.token)
+            console.log(data);
             setLoggedIn(true);
-            setCurrentUser(res);
+            setCurrentUser(data);
             handleCloseModal();
             history.push("/profile");
-          })
         } else {
           return;
         }
@@ -143,7 +139,10 @@ function App() {
   useEffect(() => {
     const token = localStorage.getItem("jwt");
     if (token) {
-      checkToken(token);
+      checkToken(token)
+      .catch((error) => {
+        console.log(error);
+      });
     } else {
       console.log("Token not Found");
     }
