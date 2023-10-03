@@ -86,9 +86,10 @@ function App() {
     register(email, password, name, avatar)
       .then((res) => {
         console.log(res);
-        setLoggedIn(true);
         setCurrentUser(res);
         handleCloseModal();
+        setLoggedIn(true);
+        history.push("/profile");
       })
       .catch((error) => {
         console.error(error);
@@ -101,12 +102,19 @@ function App() {
       .then((response) => response.json())
       .then((data) => {
         if (data.token) {
-          localStorage.setItem("jwt", data.token)
-            console.log(data);
-            setLoggedIn(true);
-            setCurrentUser(data);
-            handleCloseModal();
-            history.push("/profile");
+          localStorage.setItem("jwt", data.token);
+          console.log(data);
+          checkToken(data)
+            .then((res) => {
+              console.log(res);
+              setCurrentUser(res);
+              handleCloseModal();
+              setLoggedIn(true);
+              history.push("/profile");
+            })
+            .catch((error) => {
+              console.log(error);
+            });
         } else {
           return;
         }
@@ -139,8 +147,7 @@ function App() {
   useEffect(() => {
     const token = localStorage.getItem("jwt");
     if (token) {
-      checkToken(token)
-      .catch((error) => {
+      checkToken(token).catch((error) => {
         console.log(error);
       });
     } else {

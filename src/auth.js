@@ -4,15 +4,15 @@ export const baseUrl = "http://localhost:3001";
 
 
 // signup
-export const signup = ({ name, avatar, email, password }) => {
-  fetch(`${baseUrl}/signup`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ name, avatar, email, password }),
-  });
-};
+//export const signup = ({ name, avatar, email, password }) => {
+ // fetch(`${baseUrl}/signup`, {
+ //   method: "POST",
+ //   headers: {
+ //     "Content-Type": "application/json",
+ //   },
+ //   body: JSON.stringify({ name, avatar, email, password }),
+ // });
+//};
 
 // signin
 export const signin = ({ email, password }) => {
