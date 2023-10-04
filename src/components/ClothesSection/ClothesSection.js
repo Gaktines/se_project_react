@@ -13,11 +13,7 @@ const ClothesSection = ({
   
   const parsedCards = clothingItems.filter((item) => {
     const isOwn = item.owner._id === currentUser._id;
-    if(isOwn) {
-    return item.weather;
-    }else{
-      return "";
-    }
+   return isOwn;
     
   });
 
