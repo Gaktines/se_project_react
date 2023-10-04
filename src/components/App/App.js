@@ -160,7 +160,7 @@ function App() {
       checkToken(token)
         .then((data) => {
           console.log(data);
-          setCurrentUser(data.user); // Set the user data in your component state
+          setCurrentUser(data); // Set the user data in your component state
           setLoggedIn(true);
         })
         .catch((error) => {

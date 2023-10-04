@@ -7,8 +7,8 @@
 }
 
 .sideBar__avatar {
-    width: 56px;
-    height: 56px;
+  width: 56px;
+  height: 56px;
 }
 
 .sideBar__name {
@@ -19,5 +19,28 @@
   font-weight: 700;
   line-height: normal;
   min-width: 135px;
-  
+}
+
+.sideBar__edit-button {
+  color: #000;
+  border: none;
+  background-color: white;
+  font-family: Cabinet Grotesk;
+  min-width: 135px;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.sideBar__logout-button {
+  color: #000;
+  border: none;
+  background-color: white;
+  font-family: Cabinet Grotesk;
+  min-width: 135px;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 }
