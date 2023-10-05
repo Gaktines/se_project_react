@@ -40,3 +40,15 @@ export const removeItems = (selectedCard) => {
   }).then(checkResponse);
   return deleteItems;
 };
+
+export function editUserProfile({name, avatar}){
+  const token = localStorage.getItem("jwt");
+  return fetch(`${baseUrl}/users/me`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({name, avatar}),
+  }).then(checkResponse);
+} 

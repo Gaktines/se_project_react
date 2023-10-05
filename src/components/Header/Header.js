@@ -28,7 +28,7 @@ console.log(currentUser);
             + New Clothes
           </button>
         </div>
-        <Link to="/profile">{currentUser.data.name}</Link>
+        <Link to="/profile">{currentUser?.data.name}</Link>
         <div>
           <img src={avatar} alt="avatar" placeholder=""/>
         </div>

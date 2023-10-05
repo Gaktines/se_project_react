@@ -33,6 +33,10 @@
   line-height: normal;
 }
 
+.sideBar__edit-button:hover {
+  cursor: pointer;
+}
+
 .sideBar__logout-button {
   color: #000;
   border: none;
@@ -43,4 +47,17 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+}
+
+.sideBar__logout-button:hover {
+  cursor: pointer;
+}
+
+.sideBar__buttons {
+  display: flex;
+  padding: 8px;
+  position: absolute;
+  left: 23px;
+  top: 150px;
+  flex-direction: column;
 }

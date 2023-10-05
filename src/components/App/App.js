@@ -10,7 +10,12 @@ import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperature
 import { Switch, Route, useHistory } from "react-router-dom";
 import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
-import { fetchItems, loadItems, removeItems } from "../../utils/Api";
+import {
+  fetchItems,
+  loadItems,
+  removeItems,
+  editUserProfile,
+} from "../../utils/Api";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import { register, signin, checkToken } from "../../auth";
 import RegisterModal from "../../components/RegisterModal/RegisterModal";
@@ -120,7 +125,42 @@ function App() {
       });
   };
 
-  const handleUpdate = (name, avatar) => {};
+  /*const handleLikeClick = ({ id, isLiked, user }) => {
+    const token = localStorage.getItem("jwt");
+    // Check if this card is now liked
+    isLiked
+      ? // if so, send a request to add the user's id to the card's likes array
+        api
+          // the first argument is the card's id
+          .addCardLike(id, token)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((c) => (c._id === id ? updatedCard : c))
+            );
+          })
+          .catch((err) => console.log(err))
+      : // if not, send a request to remove the user's id from the card's likes array
+        api
+          // the first argument is the card's id
+          .removeCardLike(id, token) 
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((c) => (c._id === id ? updatedCard : c))
+            );
+          })
+          .catch((err) => console.log(err));
+  };*/
+
+  const handleUpdate = (data) => {
+    console.log(data);
+    editUserProfile(data)
+      .then((res) => {
+        console.log(res);
+        setCurrentUser(res);
+        handleCloseModal();
+      })
+      .catch((err) => console.error(err));
+  };
 
   useEffect(() => {
     fetchItems()
