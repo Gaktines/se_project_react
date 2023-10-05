@@ -4,9 +4,9 @@ import "./SideBar.css";
 import avatar from "../../images/avatar.svg";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-const SideBar = () => {
+const SideBar = (handleLogout) => {
   const [activeModal, setActiveModal] = useState("");
-  const [loggedIn, setLoggedIn] = useState(true);
+ 
   const history = useHistory();
   const currentUser = useContext(CurrentUserContext);
   console.log(currentUser);
@@ -20,7 +20,7 @@ const SideBar = () => {
   }
 
   const logout = () => {
-    setLoggedIn(false);
+    handleLogout();
     history.push("/");
   }
   return (
