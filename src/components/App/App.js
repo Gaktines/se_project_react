@@ -112,9 +112,10 @@ function App() {
         if (data.token) {
           localStorage.setItem("jwt", data.token);
           console.log(data);
-          checkToken(data)
+          checkToken(data.token)
             .then((res) => {
               console.log(res);
+              debugger;
               setCurrentUser(res);
               handleCloseModal();
               setLoggedIn(true);
