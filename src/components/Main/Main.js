@@ -4,7 +4,7 @@ import ItemCard from "../ItemCard/ItemCard";
 import React, { useMemo, useContext } from "react";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 
-function Main({ weatherTemp, onSelectCard, clothingItems }) {
+function Main({ weatherTemp, onSelectCard, clothingItems, selectedCard }) {
   const currentTemperatureUnit = useContext(CurrentTemperatureUnitContext);
   const temp =
     weatherTemp?.temp?.[currentTemperatureUnit.currentTemperatureUnit];
@@ -26,7 +26,7 @@ function Main({ weatherTemp, onSelectCard, clothingItems }) {
       return "cold";
     }
   }
-  }, [temp]);
+  }, [temp, currentTemperatureUnit.currentTemperatureUnit]);
   const sortedCards = clothingItems?.filter((item) => {
     return item.weather.toLowerCase() === weatherType;
   });
@@ -43,6 +43,7 @@ function Main({ weatherTemp, onSelectCard, clothingItems }) {
               item={x}
               key={x.id}
               onSelectCard={onSelectCard}
+              selectedCard={selectedCard}
             />
           ))}
         </div>

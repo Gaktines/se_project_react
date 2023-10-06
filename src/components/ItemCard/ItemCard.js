@@ -3,7 +3,7 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { removeItems } from "../../utils/Api";
 import "./ItemCard.css";
 
-const ItemCard = ({ item, onSelectCard }) => {
+const ItemCard = ({ item, onSelectCard, selectedCard }) => {
   const currentUser = useContext(CurrentUserContext);
   const [clothingItems, setClothingItems] = useState([]);
   console.log(item);
@@ -13,19 +13,21 @@ const ItemCard = ({ item, onSelectCard }) => {
     isOwn ? "item__delete-button_visible" : "item__delete-button_hidden"
   }`;
 
-  const handleDeleteButton = (selectedCard) => {
+  const handleDeleteButton = (event) => {
     console.log(selectedCard);
-    removeItems(selectedCard).then(() => {
-      const newClothingItems = clothingItems.filter((cards) => {
-        return cards.id !== selectedCard.id;
+    removeItems(selectedCard)
+      .then(() => {
+        const newClothingItems = clothingItems.filter((cards) => {
+          return cards.id !== selectedCard.id;
+        });
+        console.log(newClothingItems);
+        setClothingItems(newClothingItems);
+      })
+      .catch((e) => {
+        console.error(e);
       });
-      console.log(newClothingItems);
-      setClothingItems(newClothingItems);
-    })
-    .catch((e) => {
-      console.error(e);
-    });
   };
+
   return (
     <div>
       <div className="card__title">{item.name}</div>

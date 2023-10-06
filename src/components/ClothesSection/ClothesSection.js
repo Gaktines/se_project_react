@@ -6,7 +6,8 @@ import ItemCard from "../ItemCard/ItemCard";
 const ClothesSection = ({
   onSelectCard,
   handleActiveCreateModal,
-  clothingItems
+  clothingItems,
+  selectedCard
 }, currentUser) => {
   
   
@@ -36,6 +37,7 @@ const ClothesSection = ({
               item={x}
               key={x.id}
               onSelectCard={onSelectCard}
+              selectedCard={selectedCard}
             />
           ))}
         </div>

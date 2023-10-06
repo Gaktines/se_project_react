@@ -61,9 +61,6 @@ function App() {
     setActiveModal("login");
   };
 
-  const handleLogout = () => {
-    setLoggedIn(false);
-  }
 
   const onAddItem = (values) => {
     console.log(values);
