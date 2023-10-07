@@ -13,7 +13,7 @@ const SideBar = () => {
   console.log(currentUser);
 
   const openProfileEditModal = () => {
-    setActiveModal("edit");
+    setActiveModal("update");
   };
 
   const closeProfileEditModal = () => {

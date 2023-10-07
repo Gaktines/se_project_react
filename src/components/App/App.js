@@ -39,6 +39,7 @@ function App() {
 
   const handleItemCard = (card) => {
     setActiveModal("preview");
+    console.log(card);
     setSelectedCard(card);
   };
   const handleToggleSwitchChange = () => {
@@ -55,6 +56,10 @@ function App() {
 
   const handleSignupModal = () => {
     setActiveModal("signup");
+  };
+
+  const handleEditModal = () => {
+    setActiveModal("update");
   };
 
   const handleLogInModal = () => {
@@ -84,6 +89,7 @@ function App() {
         handleCloseModal();
       })
       .catch((err) => {
+        debugger;
         console.log(err);
       });
   };
@@ -245,6 +251,7 @@ function App() {
                   onSelectCard={handleItemCard}
                   handleActiveCreateModal={handleActiveCreateModal}
                   clothingItems={clothingItems}
+                  selectedCard={selectedCard}
                 />
               </ProtectedRoute>
             </Switch>
@@ -261,6 +268,7 @@ function App() {
                 selectedCard={selectedCard}
                 onClose={handleCloseModal}
                 handleDeleteButton={handleDeleteButton}
+                currentUser={currentUser}
               />
             )}
             {activeModal === "signup" && (
@@ -284,8 +292,9 @@ function App() {
               <EditProfileModal
                 handleCloseModal={handleCloseModal}
                 isOpen={activeModal === "update"}
-                handleUpdate={handleUpdate}
-                onClickSignup={handleSignupModal}
+                onSubmti={handleUpdate}
+                onClick={handleEditModal}
+                setActiveModal={setActiveModal}
               />
             )}
           </div>

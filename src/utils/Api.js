@@ -32,6 +32,7 @@ export const loadItems = ({ name, link, weather }) => {
 };
 
 export const removeItems = (selectedCard) => {
+  console.log(selectedCard);
   const deleteItems = fetch(`${baseUrl}/items/${selectedCard.id} `, {
     method: "DELETE",
     headers: {

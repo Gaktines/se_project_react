@@ -4,7 +4,7 @@ import ItemCard from "../ItemCard/ItemCard";
 import React, { useMemo, useContext } from "react";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 
-function Main({ weatherTemp, onSelectCard, clothingItems, selectedCard }) {
+function Main({ weatherTemp, onSelectCard, clothingItems }) {
   const currentTemperatureUnit = useContext(CurrentTemperatureUnitContext);
   const temp =
     weatherTemp?.temp?.[currentTemperatureUnit.currentTemperatureUnit];
@@ -27,10 +27,15 @@ function Main({ weatherTemp, onSelectCard, clothingItems, selectedCard }) {
     }
   }
   }, [temp, currentTemperatureUnit.currentTemperatureUnit]);
+  console.log(clothingItems);
   const sortedCards = clothingItems?.filter((item) => {
+    console.log(item);
+    console.log(item.weather.toLowerCase);
+    console.log(weatherType);
     return item.weather.toLowerCase() === weatherType;
+    
   });
-  
+  console.log(sortedCards);
     return (
     <main className="main">
       <WeatherCard day={true} type="stormy" weatherTemp={weatherTemp.temp} />
@@ -43,7 +48,6 @@ function Main({ weatherTemp, onSelectCard, clothingItems, selectedCard }) {
               item={x}
               key={x.id}
               onSelectCard={onSelectCard}
-              selectedCard={selectedCard}
             />
           ))}
         </div>

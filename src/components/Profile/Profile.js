@@ -3,7 +3,7 @@ import "./Profile.css";
 import SideBar from "../SideBar/SideBar";
 import ClothesSection from "../ClothesSection/ClothesSection";
 
-const Profile = ({ onSelectCard, handleActiveCreateModal, clothingItems, clothingItem }) => {
+const Profile = ({ onSelectCard, handleActiveCreateModal, clothingItems, clothingItem, selectedCard }) => {
   return (
     <section className="profile">
         <SideBar />
@@ -12,6 +12,7 @@ const Profile = ({ onSelectCard, handleActiveCreateModal, clothingItems, clothin
           handleActiveCreateModal={handleActiveCreateModal}
           clothingItems={clothingItems}
           clothingItem={clothingItem}
+          selectedCard={selectedCard}
         />
     </section>
   );
