@@ -18,7 +18,7 @@ const ItemCard = ({ item, onSelectCard, selectedCard }) => {
     removeItems(selectedCard)
       .then(() => {
         const newClothingItems = clothingItems.filter((cards) => {
-          return cards.id !== selectedCard.id;
+          return cards._id !== selectedCard._id;
         });
         console.log(newClothingItems);
         setClothingItems(newClothingItems);
