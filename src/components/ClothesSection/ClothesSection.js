@@ -7,7 +7,8 @@ const ClothesSection = ({
   onSelectCard,
   handleActiveCreateModal,
   clothingItems,
-  selectedCard
+  selectedCard, 
+  setSelectedCard
 }, currentUser) => {
   
   
@@ -38,6 +39,9 @@ const ClothesSection = ({
               key={x.id}
               onSelectCard={onSelectCard}
               selectedCard={selectedCard}
+              onClick={() => {
+                setSelectedCard(x)
+              }}
             />
           ))}
         </div>

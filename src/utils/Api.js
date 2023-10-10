@@ -6,7 +6,7 @@ export const checkResponse = (res) => {
   } else {
     return Promise.reject(`Error: ${res.status}`);
   }
-}
+};
 
 export const fetchItems = () => {
   const getItems = fetch(`${baseUrl}/items`, {
@@ -19,14 +19,15 @@ export const fetchItems = () => {
 };
 
 export const loadItems = ({ name, link, weather }) => {
+  const token = localStorage.getItem("jwt");
   const postItems = fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ name, link, weather }),
   }).then(checkResponse);
-    
 
   return postItems;
 };
@@ -37,12 +38,13 @@ export const removeItems = (selectedCard) => {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
+      authorization: `Bearer ${localStorage.getItem("jwt")}`,
     },
   }).then(checkResponse);
   return deleteItems;
 };
 
-export function editUserProfile({name, avatar}){
+export function editUserProfile({ name, avatar }) {
   const token = localStorage.getItem("jwt");
   return fetch(`${baseUrl}/users/me`, {
     method: "PATCH",
@@ -50,6 +52,6 @@ export function editUserProfile({name, avatar}){
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({name, avatar}),
+    body: JSON.stringify({ name, avatar }),
   }).then(checkResponse);
-} 
+}
