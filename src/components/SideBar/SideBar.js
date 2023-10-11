@@ -4,8 +4,7 @@ import "./SideBar.css";
 import avatar from "../../images/avatar.svg";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-const SideBar = () => {
-  const [activeModal, setActiveModal] = useState("");
+const SideBar = (handleProfileEditModal) => {
   const [loggedIn, setLoggedIn] = useState(true);
  
   const showAvatar = avatar !== "" ? true : false;
@@ -14,14 +13,6 @@ const SideBar = () => {
   console.log(currentUser);
   const name = currentUser ? currentUser.name : "";
   console.log(name);
-
-  const openProfileEditModal = () => {
-    setActiveModal("update");
-  };
-
-  const closeProfileEditModal = () => {
-    setActiveModal("");
-  }
 
   const logout = () => {
     setLoggedIn(false);
@@ -36,9 +27,9 @@ const SideBar = () => {
             <p className="avatar__placeholder">{name[0]?.toUpperCase()}</p>
           )}
       </div>
-      <p className="sideBar__name">{currentUser?.name}</p>
+      <p className="sideBar__name">{currentUser?.data.name}</p>
       <div className="sideBar__buttons">
-        <button className="sideBar__edit-button" onClick={openProfileEditModal}>Change profile data</button>
+        <button className="sideBar__edit-button" onClick={handleProfileEditModal}>Change profile data</button>
         <button className="sideBar__logout-button" onClick={logout}>Log out</button>
       </div>
     </div>

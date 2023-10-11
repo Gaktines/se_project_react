@@ -67,6 +67,9 @@ function App() {
     setActiveModal("login");
   };
 
+  const handleProfileEditModal = () => {
+    setActiveModal("update");
+  }
 
   const onAddItem = (values) => {
     console.log(values);
