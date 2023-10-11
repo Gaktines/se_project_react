@@ -12,8 +12,8 @@ const SideBar = () => {
   const history = useHistory();
   const currentUser = useContext(CurrentUserContext);
   console.log(currentUser);
-  const name = currentUser.name;
-  console.log(currentUser.name);
+  const name = currentUser ? currentUser.name : "";
+  console.log(name);
 
   const openProfileEditModal = () => {
     setActiveModal("update");

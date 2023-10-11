@@ -50,6 +50,7 @@ function Main({ weatherTemp, onSelectCard, clothingItems, setSelectedCard }) {
               onClick={() => {
                 setSelectedCard(x)
               }}
+             // onCardLike={handleCardLike}
             />
           ))}
         </div>
