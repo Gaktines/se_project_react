@@ -61,3 +61,9 @@
   top: 150px;
   flex-direction: column;
 }
+.avatar__placeholder {
+  border-radius: 25%;
+  background-color: white;
+  font-family: Cabinet Grotesk;
+
+}

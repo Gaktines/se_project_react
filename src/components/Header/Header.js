@@ -10,9 +10,12 @@ const Header = ({ onClick }) => {
   const currentDate = new Date().toLocaleString("default", {
     month: "short",
     date: "numeric",
-});
-const currentUser = useContext(CurrentUserContext);
-console.log(currentUser);
+  });
+  const showAvatar = avatar !== "" ? true : false;
+  const currentUser = useContext(CurrentUserContext);
+  console.log(currentUser);
+  const name = currentUser.name;
+  console.log(currentUser.name);
   return (
     <header className="header">
       <div className="header__logo">
@@ -30,7 +33,11 @@ console.log(currentUser);
         </div>
         <Link to="/profile">{currentUser?.data.name}</Link>
         <div>
-          <img src={avatar} alt="avatar" placeholder=""/>
+          {showAvatar ? (
+            <img src={avatar} alt="avatar"/>
+          ) : (
+            <p className="avatar__placeholder">{name[0]?.toUpperCase()}</p>
+          )}
         </div>
       </div>
     </header>

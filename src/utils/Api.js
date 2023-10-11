@@ -18,7 +18,7 @@ export const fetchItems = () => {
   return getItems;
 };
 
-export const loadItems = ({ name, link, weather }) => {
+export const loadItems = ({ name, imageUrl, weather }) => {
   const token = localStorage.getItem("jwt");
   const postItems = fetch(`${baseUrl}/items`, {
     method: "POST",
@@ -26,7 +26,7 @@ export const loadItems = ({ name, link, weather }) => {
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({ name, link, weather }),
+    body: JSON.stringify({ name, imageUrl, weather }),
   }).then(checkResponse);
 
   return postItems;
@@ -34,7 +34,7 @@ export const loadItems = ({ name, link, weather }) => {
 
 export const removeItems = (selectedCard) => {
   console.log(selectedCard);
-  const deleteItems = fetch(`${baseUrl}/items/${selectedCard._id} `, {
+  const deleteItems = fetch(`${baseUrl}/items/${selectedCard} `, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
@@ -54,4 +54,12 @@ export function editUserProfile({ name, avatar }) {
     },
     body: JSON.stringify({ name, avatar }),
   }).then(checkResponse);
-}
+};
+
+export const addCardLike = (id, token) => {
+
+};
+
+export const removeCardLike = (id, token) => {
+
+};

@@ -14,7 +14,7 @@ const ClothesSection = ({
   
   
   const parsedCards = clothingItems.filter((item) => {
-    const isOwn = item.owner._id === currentUser._id;
+    const isOwn = item.owner === currentUser?._id;
    return isOwn;
     
   });

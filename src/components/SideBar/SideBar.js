@@ -8,9 +8,12 @@ const SideBar = () => {
   const [activeModal, setActiveModal] = useState("");
   const [loggedIn, setLoggedIn] = useState(true);
  
+  const showAvatar = avatar !== "" ? true : false;
   const history = useHistory();
   const currentUser = useContext(CurrentUserContext);
   console.log(currentUser);
+  const name = currentUser.name;
+  console.log(currentUser.name);
 
   const openProfileEditModal = () => {
     setActiveModal("update");
@@ -26,12 +29,13 @@ const SideBar = () => {
   }
   return (
     <div className="sideBar">
-      <img
-        className="sideBar__avatar"
-        src={avatar}
-        alt="avatar"
-        placeholder=""
-      />
+      <div>
+      {showAvatar ? (
+            <img src={avatar} alt="avatar"/>
+          ) : (
+            <p className="avatar__placeholder">{name[0]?.toUpperCase()}</p>
+          )}
+      </div>
       <p className="sideBar__name">{currentUser?.name}</p>
       <div className="sideBar__buttons">
         <button className="sideBar__edit-button" onClick={openProfileEditModal}>Change profile data</button>

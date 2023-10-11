@@ -24,6 +24,7 @@ import { AppContext } from "../AppContext";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import UnAuthHeader from "../UnAuthHeader/UnAuthHeader";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
+import { addCardLike, removeCardLike } from "../../utils/Api";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -133,31 +134,29 @@ function App() {
       });
   };
 
-  /*const handleLikeClick = ({ id, isLiked, user }) => {
+  const handleLikeClick = ({ id, isLiked, user }) => {
     const token = localStorage.getItem("jwt");
     // Check if this card is now liked
     isLiked
       ? // if so, send a request to add the user's id to the card's likes array
-        api
           // the first argument is the card's id
-          .addCardLike(id, token)
+          addCardLike(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
-              cards.map((c) => (c._id === id ? updatedCard : c))
+              cards.map((x) => (x._id === id ? updatedCard : x))
             );
           })
           .catch((err) => console.log(err))
       : // if not, send a request to remove the user's id from the card's likes array
-        api
           // the first argument is the card's id
-          .removeCardLike(id, token) 
+          removeCardLike(id, token) 
           .then((updatedCard) => {
             setClothingItems((cards) =>
-              cards.map((c) => (c._id === id ? updatedCard : c))
+              cards.map((x) => (x._id === id ? updatedCard : x))
             );
           })
           .catch((err) => console.log(err));
-  };*/
+  };
 
   const handleUpdate = (data) => {
     console.log(data);
@@ -244,6 +243,7 @@ function App() {
                   weatherTemp={temp}
                   onSelectCard={handleItemCard}
                   clothingItems={clothingItems}
+                  handleLikeClick={handleLikeClick}
                 />
               </Route>
               <ProtectedRoute path="/profile">
@@ -252,6 +252,7 @@ function App() {
                   handleActiveCreateModal={handleActiveCreateModal}
                   clothingItems={clothingItems}
                   selectedCard={selectedCard}
+                  handleLikeClick={handleLikeClick}
                 />
               </ProtectedRoute>
             </Switch>

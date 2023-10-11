@@ -4,7 +4,7 @@ import "./AddItemModal.css";
 
 const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
   const [name, setName] = useState("");
-  const [link, setUrl] = useState("");
+  const [imageUrl, setUrl] = useState("");
   const [weather, setWeather] = useState("hot");
 
   const handleNameChange = (e) => {
@@ -19,7 +19,7 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddItem({ name, link, weather });
+    onAddItem({ name, imageUrl, weather });
   };
   return (
     <ModalWithForm
@@ -51,7 +51,7 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
           minLength="1"
           maxLength="300"
           required
-          value={link}
+          value={imageUrl}
           onChange={handleUrlChange}
         ></input>
       </label>
