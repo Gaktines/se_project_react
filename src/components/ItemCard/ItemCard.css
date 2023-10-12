@@ -38,3 +38,12 @@
   font-weight: 700;
   line-height: 24px; 
 }
+
+.card__like-button {
+  background-image: "LikeButton.svg";
+  width: 18px;
+  height: 15px;
+  background-repeat: off;
+  position: relative;
+  top: 40px;
+}

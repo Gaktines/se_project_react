@@ -8,8 +8,8 @@ const SideBar = (handleEditModal, handleLogout) => {
  
   const showAvatar = avatar !== "" ? true : false;
   const currentUser = useContext(CurrentUserContext);
-  console.log(currentUser.data.name);
-  const name = currentUser.data ? currentUser.data.name : "";
+
+  const name = currentUser ? currentUser.data.name : "";
   console.log(name);
 
   

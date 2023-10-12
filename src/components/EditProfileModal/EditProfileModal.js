@@ -3,7 +3,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./EditProfileModal.css";
 
 
-const EditProfileModal = ({ handleCloseModal, isOpen, currentUser }) => {
+const EditProfileModal = ({ handleCloseModal, isOpen, currentUser, }) => {
   const [name, setName] = useState(currentUser.data.ModalWithFormname);
   const [avatar, setUrl] = useState(currentUser.data.avatar);
 
