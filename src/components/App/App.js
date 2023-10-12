@@ -69,8 +69,9 @@ function App() {
 
   const handleLogout = () => {
     setLoggedIn(false);
+    localStorage.removeItem("jwt");
     history.push("/");
-  }
+  };
 
   const onAddItem = (values) => {
     console.log(values);
@@ -143,8 +144,8 @@ function App() {
     // Check if this card is now liked
     isLiked
       ? // if so, send a request to add the user's id to the card's likes array
-          // the first argument is the card's id
-          addCardLike(id, token)
+        // the first argument is the card's id
+        addCardLike(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
               cards.map((x) => (x._id === id ? updatedCard : x))
@@ -152,8 +153,8 @@ function App() {
           })
           .catch((err) => console.log(err))
       : // if not, send a request to remove the user's id from the card's likes array
-          // the first argument is the card's id
-          removeCardLike(id, token) 
+        // the first argument is the card's id
+        removeCardLike(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
               cards.map((x) => (x._id === id ? updatedCard : x))
@@ -258,6 +259,7 @@ function App() {
                   selectedCard={selectedCard}
                   handleLikeClick={handleLikeClick}
                   handleEditModal={handleEditModal}
+                  handleLogout={handleLogout}
                 />
               </ProtectedRoute>
             </Switch>
