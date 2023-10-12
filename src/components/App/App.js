@@ -67,8 +67,9 @@ function App() {
     setActiveModal("login");
   };
 
-  const handleProfileEditModal = () => {
-    setActiveModal("update");
+  const handleLogout = () => {
+    setLoggedIn(false);
+    history.push("/");
   }
 
   const onAddItem = (values) => {
@@ -256,6 +257,7 @@ function App() {
                   clothingItems={clothingItems}
                   selectedCard={selectedCard}
                   handleLikeClick={handleLikeClick}
+                  handleEditModal={handleEditModal}
                 />
               </ProtectedRoute>
             </Switch>
@@ -297,8 +299,9 @@ function App() {
                 handleCloseModal={handleCloseModal}
                 isOpen={activeModal === "update"}
                 onSubmti={handleUpdate}
-                onClick={handleEditModal}
+                handleEditModal={handleEditModal}
                 setActiveModal={setActiveModal}
+                currentUser={currentUser}
               />
             )}
           </div>
