@@ -38,7 +38,7 @@ const Header = ({ onClick, loggedIn, onClickSignup, onClickLogin }) => {
                 + New Clothes
               </button>
             </div>
-            <Link to="/profile">{currentUser?.data.name}</Link>
+            <Link to="/profile">{currentUser?.name}</Link>
             <div>
               {showAvatar ? (
                 <img src={avatar} alt="avatar" />

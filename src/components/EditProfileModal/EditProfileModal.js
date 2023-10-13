@@ -5,7 +5,7 @@ import "./EditProfileModal.css";
 
 const EditProfileModal = ({ handleCloseModal, isOpen, currentUser, }) => {
   const [name, setName] = useState(currentUser.name);
-  const [avatar, setUrl] = useState(currentUser.data.avatar);
+  const [avatar, setUrl] = useState(currentUser.avatar);
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -33,7 +33,7 @@ const EditProfileModal = ({ handleCloseModal, isOpen, currentUser, }) => {
           className="modal__input-name"
           type="text"
           name="name"
-          placeholder={currentUser.data.name}
+          placeholder={currentUser.name}
           minLength="1"
           maxLength="30"
           value={name}
@@ -46,7 +46,7 @@ const EditProfileModal = ({ handleCloseModal, isOpen, currentUser, }) => {
           className="modal__input-link"
           type="url"
           name="avatar"
-          placeholder={currentUser.data.avatar}
+          placeholder={currentUser.avatar}
           minLength="1"
           maxLength="300"
           value={avatar}

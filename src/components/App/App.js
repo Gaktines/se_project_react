@@ -233,6 +233,7 @@ console.log(currentUser);
               onClick={handleActiveCreateModal}
               onClickLogin={handleLogInModal}
               onClickSignup={handleSignupModal}
+              loggedIn={loggedIn}
               temp={temp}
             />
             <Switch>

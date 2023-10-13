@@ -29,15 +29,25 @@ const ItemCard = ({
   };
   return (
     <div className="card">
-      <div className="card__title">{item.name}</div>
+      
       {loggedIn ? (
+        <>
+        <div className="card__title-block">
+        <div className="card__title">{item.name}</div>
         <button
           className={likeButtonClassName}
           type="button"
           onClick={handleLikeClick}
         />
+        </div>
+        </>
       ) : (
+        <>
+        <div className="card__title-block">
+        <div className="card__title">{item.name}</div>
         <button className="card__like-button-hidden" />
+        </div>
+        </>
       )}
       <img
         src={item?.imageUrl || item?.link}
