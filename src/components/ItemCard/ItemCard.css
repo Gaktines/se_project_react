@@ -1,7 +1,14 @@
 .card__title {
   text-align: center;
-  position: relative;
-  top: 40px;
+  justify-content: center;
+  position: absolute;
+  top: 20px;
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 2px 12px;
+  margin: 0;
+  color: rgba(0, 0, 0, 0.6);
+  width: 102px;
 }
 
 .card__image {
@@ -44,7 +51,13 @@
   width: 18px;
   height: 15px;
   background-repeat: off;
+  position: absolute;
+  top: 20px;
+ left: 40px;
+}
+
+.card {
+  justify-content: center;
+  display: flex;
   position: relative;
-  top: 40px;
- 
 }

@@ -7,7 +7,7 @@ const ItemModal = ({ selectedCard, onClose, handleDeleteButton, currentUser }) =
 // Checking if the current user is the owner of the current clothing item
 console.log(selectedCard);
 console.log(currentUser);
-const isOwn = selectedCard.owner === currentUser._id;
+const isOwn = selectedCard.owner === currentUser?.data._id;
 
 // Creating a variable which you'll then set in `className` for the delete button
 const modalDeleteClassName = (

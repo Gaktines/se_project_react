@@ -95,7 +95,6 @@ function App() {
         handleCloseModal();
       })
       .catch((err) => {
-        debugger;
         console.log(err);
       });
   };
@@ -124,7 +123,6 @@ function App() {
           checkToken(data.token)
             .then((res) => {
               console.log(res);
-              debugger;
               setCurrentUser(res);
               handleCloseModal();
               setLoggedIn(true);
