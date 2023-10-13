@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./ClothesSection.css";
 import ItemCard from "../ItemCard/ItemCard";
-
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const ClothesSection = ({
   onSelectCard,
@@ -9,11 +9,13 @@ const ClothesSection = ({
   clothingItems,
   selectedCard, 
   setSelectedCard
-}, currentUser) => {
+},) => {
   
   
-  
+  const currentUser = useContext(CurrentUserContext);
+  console.log(currentUser);
   const parsedCards = clothingItems.filter((item) => {
+    console.log(item.owner, currentUser?._id);
     const isOwn = item.owner === currentUser?._id;
    return isOwn;
     

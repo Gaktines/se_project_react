@@ -1,6 +1,5 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import { removeItems } from "../../utils/Api";
 import "./ItemCard.css";
 
 const ItemCard = ({
@@ -11,31 +10,17 @@ const ItemCard = ({
   loggedIn,
 }) => {
   const currentUser = useContext(CurrentUserContext);
-  const [clothingItems, setClothingItems] = useState([]);
+  
   console.log(item);
   console.log(currentUser);
 
   const cardId = item._id;
   const userId = currentUser ? currentUser.data._id : "";
-  const isLiked = item.likes.some((id) => id === currentUser?.data._id);
+  const isLiked = item.likes.some(id => id === currentUser._id);
   const likeButtonClassName = isLiked
     ? "card__like-button"
     : "card__like-button-inactive";
 
-  const handleDeleteButton = (event) => {
-    console.log(selectedCard);
-    removeItems(selectedCard)
-      .then(() => {
-        const newClothingItems = clothingItems.filter((cards) => {
-          return cards._id !== selectedCard._id;
-        });
-        console.log(newClothingItems);
-        setClothingItems(newClothingItems);
-      })
-      .catch((e) => {
-        console.error(e);
-      });
-  };
   const handleLikeClick = () => {
     oncardLike({ _id: cardId, isLiked: isLiked, user: userId });
     console.log(cardId);

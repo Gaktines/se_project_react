@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { useContext } from "react";
 
-const Header = ({ onClick }) => {
+const Header = ({ onClick, loggedIn, onClickSignup, onClickLogin }) => {
   const currentDate = new Date().toLocaleString("default", {
     month: "short",
     date: "numeric",
@@ -16,6 +16,7 @@ const Header = ({ onClick }) => {
   console.log(currentUser);
   const name = currentUser ? currentUser.name : "";
   console.log(name);
+  console.log(loggedIn);
   return (
     <header className="header">
       <div className="header__logo">
@@ -26,19 +27,45 @@ const Header = ({ onClick }) => {
       </div>
       <div className="header__avatar-logo">
         <ToggleSwitch />
-        <div>
-          <button className="header__add-button" type="text" onClick={onClick}>
-            + New Clothes
-          </button>
-        </div>
-        <Link to="/profile">{currentUser?.data.name}</Link>
-        <div>
-          {showAvatar ? (
-            <img src={avatar} alt="avatar"/>
-          ) : (
-            <p className="avatar__placeholder">{name[0]?.toUpperCase()}</p>
-          )}
-        </div>
+        {loggedIn ? (
+          <>
+            <div>
+              <button
+                className="header__add-button"
+                type="text"
+                onClick={onClick}
+              >
+                + New Clothes
+              </button>
+            </div>
+            <Link to="/profile">{currentUser?.data.name}</Link>
+            <div>
+              {showAvatar ? (
+                <img src={avatar} alt="avatar" />
+              ) : (
+                <p className="avatar__placeholder">{name[0]?.toUpperCase()}</p>
+              )}
+            </div>
+          </>
+        ) : (
+          <>
+            {" "}
+            <button
+              className="header__nav_button"
+              type="text"
+              onClick={onClickSignup}
+            >
+              Sign Up
+            </button>
+            <button
+              className="header__nav_button"
+              type="text"
+              onClick={onClickLogin}
+            >
+              Log In
+            </button>
+          </>
+        )}
       </div>
     </header>
   );

@@ -22,7 +22,6 @@ import RegisterModal from "../../components/RegisterModal/RegisterModal";
 import LoginModal from "../../components/LoginModal/LoginModal";
 import { AppContext } from "../AppContext";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import UnAuthHeader from "../UnAuthHeader/UnAuthHeader";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import { addCardLike, removeCardLike } from "../../utils/Api";
 
@@ -77,7 +76,7 @@ function App() {
     console.log(values);
     loadItems(values)
       .then((data) => {
-        setClothingItems([data, ...clothingItems]);
+        setClothingItems([data.data, ...clothingItems]);
         handleCloseModal();
       })
       .catch((error) => {
@@ -222,7 +221,8 @@ function App() {
       console.log("Token not Found");
     }
   }, [loggedIn, history]);
-
+console.log(currentUser);
+debugger;
   return (
     <CurrentTemperatureUnitContext.Provider
       value={{ currentTemperatureUnit, handleToggleSwitchChange }}
@@ -230,16 +230,12 @@ function App() {
       <CurrentUserContext.Provider value={currentUser}>
         <AppContext.Provider value={appContextValue}>
           <div>
-            {loggedIn ? (
-              <Header onClick={handleActiveCreateModal} temp={temp} />
-            ) : (
-              <UnAuthHeader
-                onClick={handleActiveCreateModal}
-                onClickLogin={handleLogInModal}
-                onClickSignup={handleSignupModal}
-                temp={temp}
-              />
-            )}
+            <Header
+              onClick={handleActiveCreateModal}
+              onClickLogin={handleLogInModal}
+              onClickSignup={handleSignupModal}
+              temp={temp}
+            />
             <Switch>
               <Route exact path="/">
                 <Main

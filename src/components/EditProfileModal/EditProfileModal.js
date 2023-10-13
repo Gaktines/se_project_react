@@ -33,7 +33,7 @@ const EditProfileModal = ({ handleCloseModal, isOpen, currentUser, }) => {
           className="modal__input-name"
           type="text"
           name="name"
-          placeholder="Name"
+          placeholder={currentUser.data.name}
           minLength="1"
           maxLength="30"
           value={name}
@@ -46,7 +46,7 @@ const EditProfileModal = ({ handleCloseModal, isOpen, currentUser, }) => {
           className="modal__input-link"
           type="url"
           name="avatar"
-          placeholder="Image URL"
+          placeholder={currentUser.data.avatar}
           minLength="1"
           maxLength="300"
           value={avatar}
