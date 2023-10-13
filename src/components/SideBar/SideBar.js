@@ -9,7 +9,7 @@ const SideBar = ({handleEditModal, handleLogout}) => {
   const showAvatar = avatar !== "" ? true : false;
   const currentUser = useContext(CurrentUserContext);
 
-  const name = currentUser ? currentUser.data.name : "";
+  const name = currentUser ? currentUser.name : "";
   console.log(name);
 
   
@@ -22,7 +22,7 @@ const SideBar = ({handleEditModal, handleLogout}) => {
             <p className="avatar__placeholder">{name[0]?.toUpperCase()}</p>
           )}
       </div>
-      <p className="sideBar__name">{currentUser?.data.name}</p>
+      <p className="sideBar__name">{currentUser?.name}</p>
       <div className="sideBar__buttons">
         <button className="sideBar__edit-button" onClick={handleEditModal}>Change profile data</button>
         <button className="sideBar__logout-button" onClick={handleLogout}>Log out</button>

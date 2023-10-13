@@ -15,7 +15,7 @@ const ItemCard = ({
   console.log(currentUser);
 
   const cardId = item._id;
-  const userId = currentUser ? currentUser.data._id : "";
+  const userId = currentUser ? currentUser._id : "";
   const isLiked = item.likes.some(id => id === currentUser._id);
   const likeButtonClassName = isLiked
     ? "card__like-button"

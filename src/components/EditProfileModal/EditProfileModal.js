@@ -4,7 +4,7 @@ import "./EditProfileModal.css";
 
 
 const EditProfileModal = ({ handleCloseModal, isOpen, currentUser, }) => {
-  const [name, setName] = useState(currentUser.data.ModalWithFormname);
+  const [name, setName] = useState(currentUser.name);
   const [avatar, setUrl] = useState(currentUser.data.avatar);
 
   const handleNameChange = (e) => {

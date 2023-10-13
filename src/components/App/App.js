@@ -102,7 +102,7 @@ function App() {
     register(email, password, name, avatar)
       .then((res) => {
         console.log(res);
-        setCurrentUser(res);
+        setCurrentUser(res.data);
         handleCloseModal();
         setLoggedIn(true);
         history.push("/profile");
@@ -122,7 +122,7 @@ function App() {
           checkToken(data.token)
             .then((res) => {
               console.log(res);
-              setCurrentUser(res);
+              setCurrentUser(res.data);
               handleCloseModal();
               setLoggedIn(true);
               history.push("/profile");
@@ -165,7 +165,7 @@ function App() {
     editUserProfile(data)
       .then((res) => {
         console.log(res);
-        setCurrentUser(res);
+        setCurrentUser(res.data);
         handleCloseModal();
       })
       .catch((err) => console.error(err));
@@ -209,7 +209,7 @@ function App() {
       checkToken(token)
         .then((data) => {
           console.log(data);
-          setCurrentUser(data); // Set the user data in your component state
+          setCurrentUser(data.data); // Set the user data in your component state
           setLoggedIn(true);
         })
         .catch((error) => {
@@ -222,7 +222,6 @@ function App() {
     }
   }, [loggedIn, history]);
 console.log(currentUser);
-debugger;
   return (
     <CurrentTemperatureUnitContext.Provider
       value={{ currentTemperatureUnit, handleToggleSwitchChange }}
