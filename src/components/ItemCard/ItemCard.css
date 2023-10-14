@@ -55,6 +55,7 @@
   background-repeat: off;
   position: relative;
   top: 20px;
+ border: none;
 }
 
 .card {
