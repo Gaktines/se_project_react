@@ -242,7 +242,7 @@ console.log(currentUser);
                   weatherTemp={temp}
                   onSelectCard={handleItemCard}
                   clothingItems={clothingItems}
-                  handleLikeClick={handleLikeClick}
+                  loggedIn={loggedIn}
                 />
               </Route>
               <ProtectedRoute path="/profile">
@@ -254,6 +254,7 @@ console.log(currentUser);
                   handleLikeClick={handleLikeClick}
                   handleEditModal={handleEditModal}
                   handleLogout={handleLogout}
+                  loggedIn={loggedIn}
                 />
               </ProtectedRoute>
             </Switch>

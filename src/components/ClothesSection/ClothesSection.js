@@ -8,7 +8,8 @@ const ClothesSection = ({
   handleActiveCreateModal,
   clothingItems,
   selectedCard, 
-  setSelectedCard
+  setSelectedCard,
+  loggedIn
 },) => {
   
   
@@ -44,6 +45,7 @@ const ClothesSection = ({
               onClick={() => {
                 setSelectedCard(x)
               }}
+              loggedIn={loggedIn}
             />
           ))}
         </div>

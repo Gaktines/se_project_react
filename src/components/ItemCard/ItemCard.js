@@ -6,7 +6,7 @@ const ItemCard = ({
   item,
   onSelectCard,
   selectedCard,
-  oncardLike,
+  onCardLike,
   loggedIn,
 }) => {
   const currentUser = useContext(CurrentUserContext);
@@ -22,11 +22,12 @@ const ItemCard = ({
     : "card__like-button-inactive";
 
   const handleLikeClick = () => {
-    oncardLike({ _id: cardId, isLiked: isLiked, user: userId });
+    onCardLike({ _id: cardId, isLiked: isLiked, user: userId });
     console.log(cardId);
     console.log(isLiked);
     console.log(userId);
   };
+  console.log(loggedIn);
   return (
     <div className="card">
       
@@ -45,7 +46,6 @@ const ItemCard = ({
         <>
         <div className="card__title-block">
         <div className="card__title">{item.name}</div>
-        <button className="card__like-button-hidden" />
         </div>
         </>
       )}
