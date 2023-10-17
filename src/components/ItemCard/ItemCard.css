@@ -54,11 +54,13 @@
   height: 15px;
   background-repeat: off;
   position: relative;
-  top: 20px;
+  top: 5px;
   border: none;
 }
-
-.card__like-button:active {
+.card__like-button:hover {
+  cursor: pointer;
+}
+.card__like-button-active {
   background-image: url("../../images/Likebuttonactive.svg");
 }
 
@@ -66,4 +68,8 @@
   justify-content: center;
   display: flex;
   position: relative;
+}
+
+.card__like-button-inactive {
+
 }

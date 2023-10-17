@@ -3,7 +3,7 @@ import "./ItemModal.css";
 
 
 
-const ItemModal = ({ selectedCard, onClose, handleDeleteButton, currentUser }) => {
+const ItemModal = ({ selectedCard, onClose, handleDeleteButton, currentUser, loggedIn }) => {
 // Checking if the current user is the owner of the current clothing item
 console.log(selectedCard);
 console.log(currentUser);
@@ -32,13 +32,15 @@ const modalDeleteClassName = (
           <div className="modal__weather-type">
             Weather: {selectedCard.weather}
           </div>
+          {loggedIn ? (
           <button
             className={modalDeleteClassName}
             type="button"
             onClick={() => handleDeleteButton(selectedCard)}
           >
             Delete Item
-          </button>
+          </button>): ("")}
+          
         </div>
       </div>
     </div>

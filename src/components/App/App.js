@@ -243,6 +243,7 @@ console.log(currentUser);
                   onSelectCard={handleItemCard}
                   clothingItems={clothingItems}
                   loggedIn={loggedIn}
+                  handleCardLike={handleLikeClick}
                 />
               </Route>
               <ProtectedRoute path="/profile">
@@ -272,6 +273,7 @@ console.log(currentUser);
                 onClose={handleCloseModal}
                 handleDeleteButton={handleDeleteButton}
                 currentUser={currentUser}
+                loggedIn={loggedIn}
               />
             )}
             {activeModal === "signup" && (
