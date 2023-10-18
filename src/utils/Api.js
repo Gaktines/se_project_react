@@ -56,10 +56,22 @@ export function editUserProfile({ name, avatar }) {
   }).then(checkResponse);
 };
 
-export const addCardLike = (id, token) => {
-
+export const addCardLike = (itemId) => {
+  return fetch(`${baseUrl}/items/${itemId}/likes`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${localStorage.getItem("jwt")}`,
+    },
+  }).then(checkResponse);
 };
 
-export const removeCardLike = (id, token) => {
-
+export const removeCardLike = (itemId) => {
+  return fetch(`${baseUrl}/items/${itemId}/likes`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${localStorage.getItem("jwt")}`,
+    },
+  }).then(checkResponse);
 };
