@@ -7,15 +7,16 @@ const EditProfileModal = ({ handleCloseModal, isOpen, currentUser, }) => {
   const [name, setName] = useState(currentUser.name);
   const [avatar, setUrl] = useState(currentUser.avatar);
 
-  const handleNameChange = (e) => {
-    setName(e.target.value);
+  const handleNameChange = (evt) => {
+   
+    setName(evt.target.value);
   };
-  const handleUrlChange = (e) => {
-    console.log(e.target.value);
-    setUrl(e.target.value);
+  const handleUrlChange = (evt) => {
+    console.log(evt.target.value);
+    setUrl(evt.target.value);
   };
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
   handleNameChange();
   handleUrlChange();
   };

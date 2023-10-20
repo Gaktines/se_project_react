@@ -1,5 +1,5 @@
 import "./ModalWithForm.css";
-
+  
 const ModalWithForm = ({
   children,
   name,
@@ -9,6 +9,7 @@ const ModalWithForm = ({
   isOpen,
   onSubmit,
 }) => {
+  console.log(buttonText);
   return (
     <div className={`modal modal_type_${name}`}>
       <div className="modal__contents">

@@ -60,7 +60,7 @@
 .card__like-button:hover {
   cursor: pointer;
 }
-.card__like-button:active {
+.card__like-button-active {
   background-image: url("../../images/Likebuttonactive.svg");
   background-repeat: off;
   border: none;

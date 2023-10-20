@@ -53,7 +53,7 @@
   line-height: 20px;
 }
 .modal__submit-button:hover {
-  background-image: url("../../images/State=Hover.svg");
+  cursor:pointer;
 }
 
 .modal__submit-button:disabled {

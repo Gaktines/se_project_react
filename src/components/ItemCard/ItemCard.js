@@ -18,8 +18,8 @@ const ItemCard = ({
   const userId = currentUser ? currentUser._id : "";
   const isLiked = item.likes.some(id => id === userId);
   const likeButtonClassName = isLiked
-    ? "card__like-button-active"
-    : "card__like-button";
+    ? "card__like-button card__like-button-active"
+    : "card__like-button ";
 
   const handleLikeClick = () => {
     onCardLike({ _id: cardId, isLiked: isLiked, user: userId });

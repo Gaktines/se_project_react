@@ -6,7 +6,7 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
   const [name, setName] = useState("");
   const [imageUrl, setUrl] = useState("");
   const [weather, setWeather] = useState("hot");
-
+const buttonText = "Add Garment";
   const handleNameChange = (e) => {
     setName(e.target.value);
   };
