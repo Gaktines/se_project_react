@@ -9,7 +9,9 @@ const ClothesSection = ({
   clothingItems,
   selectedCard, 
   setSelectedCard,
-  loggedIn
+  loggedIn,
+  onCardLike,
+  handleCardLike
 },) => {
   
   
@@ -39,13 +41,15 @@ const ClothesSection = ({
           {parsedCards.map((x) => (
             <ItemCard
               item={x}
-              key={x.id}
+              key={x._id}
+              onCardLike={handleCardLike} 
               onSelectCard={onSelectCard}
               selectedCard={selectedCard}
               onClick={() => {
                 setSelectedCard(x)
               }}
               loggedIn={loggedIn}
+              
             />
           ))}
         </div>

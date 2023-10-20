@@ -142,22 +142,23 @@ function App() {
     isLiked
       ? // if so, send a request to add the user's id to the card's likes array
         // the first argument is the card's id
-        addCardLike(_id, token)
-          .then((updatedCard) => {
-            setClothingItems((cards) =>
-              cards.map((x) => (x._id === _id ? updatedCard : x))
-            );
-          })
-          .catch((err) => console.log(err))
+        removeCardLike(_id, token)
+        .then((updatedCard) => {
+          setClothingItems((cards) =>
+            cards.map((x) => (x._id === _id ? updatedCard : x))
+          );
+        })
+        .catch((err) => console.log(err))
+        
       : // if not, send a request to remove the user's id from the card's likes array
         // the first argument is the card's id
-        removeCardLike(_id, token)
-          .then((updatedCard) => {
-            setClothingItems((cards) =>
-              cards.map((x) => (x._id === _id ? updatedCard : x))
-            );
-          })
-          .catch((err) => console.log(err));
+        addCardLike(_id, token)
+        .then((updatedCard) => {
+          setClothingItems((cards) =>
+            cards.map((x) => (x._id === _id ? updatedCard : x))
+          );
+        })
+        .catch((err) => console.log(err));
   };
 
   const handleUpdate = (data) => {

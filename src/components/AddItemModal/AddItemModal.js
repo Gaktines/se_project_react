@@ -6,7 +6,7 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
   const [name, setName] = useState("");
   const [imageUrl, setUrl] = useState("");
   const [weather, setWeather] = useState("hot");
-const buttonText = "Add Garment";
+
   const handleNameChange = (e) => {
     setName(e.target.value);
   };
@@ -26,6 +26,7 @@ const buttonText = "Add Garment";
       onClose={handleCloseModal}
       isOpen={isOpen}
       onSubmit={handleSubmit}
+      buttonText={"Add Garment"}
     >
       <label className="modal__label">
         Name

@@ -52,7 +52,7 @@ function Main({
           {sortedCards.map((x) => (
             <ItemCard
               item={x}
-              key={x.id}
+              key={x._id}
               onSelectCard={onSelectCard}
               onCardLike={handleCardLike}
               onClick={() => {
