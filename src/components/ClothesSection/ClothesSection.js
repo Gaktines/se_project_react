@@ -39,6 +39,7 @@ const ClothesSection = ({
       <div className="clothesSection__cards">
         <div className="clothesSection__card-items">
           {parsedCards.map((x) => (
+            console.log(x),
             <ItemCard
               item={x}
               key={x._id}

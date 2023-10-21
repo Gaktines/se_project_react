@@ -3,22 +3,22 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./EditProfileModal.css";
 
 
-const EditProfileModal = ({ handleCloseModal, isOpen, currentUser, }) => {
+const EditProfileModal = ({ handleCloseModal, isOpen, onSubmit, currentUser }) => {
   const [name, setName] = useState(currentUser.name);
   const [avatar, setUrl] = useState(currentUser.avatar);
 
-  const handleNameChange = (evt) => {
-   
-    setName(evt.target.value);
+  const handleNameChange = (e) => {
+    console.log(e);
+    setName(e.target.value);
   };
-  const handleUrlChange = (evt) => {
-    console.log(evt.target.value);
-    setUrl(evt.target.value);
+  const handleUrlChange = (e) => {
+    console.log(e.target.value);
+    setUrl(e.target.value);
   };
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
-  handleNameChange();
-  handleUrlChange();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(name, avatar);
+    onSubmit({ name: name, avatar: avatar });
   };
   
   return (
@@ -37,7 +37,7 @@ const EditProfileModal = ({ handleCloseModal, isOpen, currentUser, }) => {
           placeholder={currentUser.name}
           minLength="1"
           maxLength="30"
-          value={name}
+          defaultValue={name}
           onChange={handleNameChange}
         ></input>
       </label>
@@ -50,7 +50,7 @@ const EditProfileModal = ({ handleCloseModal, isOpen, currentUser, }) => {
           placeholder={currentUser.avatar}
           minLength="1"
           maxLength="300"
-          value={avatar}
+          defaultValue={avatar}
           onChange={handleUrlChange}
         ></input>
       </label>
