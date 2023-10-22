@@ -38,8 +38,9 @@ const ClothesSection = ({
       </div>
       <div className="clothesSection__cards">
         <div className="clothesSection__card-items">
-          {parsedCards.map((x) => (
-            console.log(x),
+          {parsedCards.map((x) => 
+            {console.log(x)
+              return (
             <ItemCard
               item={x}
               key={x._id}
@@ -51,8 +52,8 @@ const ClothesSection = ({
               }}
               loggedIn={loggedIn}
               
-            />
-          ))}
+            />)}
+            )}
         </div>
       </div>
     </section>

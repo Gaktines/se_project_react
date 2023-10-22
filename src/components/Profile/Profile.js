@@ -14,10 +14,11 @@ const Profile = ({
   loggedIn,
   onCardLike,
   handleCardLike,
+  onSubmit,
 }) => {
   return (
     <section className="profile">
-      <SideBar handleEditModal={handleEditModal} handleLogout={handleLogout} />
+      <SideBar handleEditModal={handleEditModal} handleLogout={handleLogout} onSubmit={onSubmit}/>
       <ClothesSection
         onSelectCard={onSelectCard}
         handleActiveCreateModal={handleActiveCreateModal}
