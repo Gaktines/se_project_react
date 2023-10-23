@@ -257,6 +257,7 @@ function App() {
                   handleEditModal={handleEditModal}
                   handleLogout={handleLogout}
                   loggedIn={loggedIn}
+                
                 />
               </ProtectedRoute>
             </Switch>
