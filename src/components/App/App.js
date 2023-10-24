@@ -299,7 +299,7 @@ function App() {
               <EditProfileModal
                 handleCloseModal={handleCloseModal}
                 isOpen={activeModal === "update"}
-                onSubmti={handleUpdate}
+                onSubmit={handleUpdate}
                 handleEditModal={handleEditModal}
                 setActiveModal={setActiveModal}
                 currentUser={currentUser}

@@ -44,14 +44,14 @@ const ClothesSection = ({
             <ItemCard
               item={x}
               key={x._id}
-              onCardLike={handleCardLike} 
+              onCardLike={onCardLike} 
               onSelectCard={onSelectCard}
               selectedCard={selectedCard}
               onClick={() => {
                 setSelectedCard(x)
               }}
               loggedIn={loggedIn}
-              
+              handleCardLike={handleCardLike}
             />)}
             )}
         </div>
