@@ -36,7 +36,6 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const appContextValue = { state: { loggedIn, userData } };
   const history = useHistory();
-  
 
   const handleItemCard = (card) => {
     setActiveModal("preview");
@@ -244,7 +243,7 @@ function App() {
                   onSelectCard={handleItemCard}
                   clothingItems={clothingItems}
                   loggedIn={loggedIn}
-                  handleCardLike={handleLikeClick}
+                  onCardLike={handleLikeClick}
                 />
               </Route>
               <ProtectedRoute path="/profile">
@@ -257,7 +256,7 @@ function App() {
                   handleEditModal={handleEditModal}
                   handleLogout={handleLogout}
                   loggedIn={loggedIn}
-                
+                  onCardLike={handleLikeClick}
                 />
               </ProtectedRoute>
             </Switch>

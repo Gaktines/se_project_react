@@ -11,7 +11,6 @@ const ClothesSection = ({
   setSelectedCard,
   loggedIn,
   onCardLike,
-  handleCardLike
 },) => {
   
   
@@ -51,7 +50,6 @@ const ClothesSection = ({
                 setSelectedCard(x)
               }}
               loggedIn={loggedIn}
-              handleCardLike={handleCardLike}
             />)}
             )}
         </div>

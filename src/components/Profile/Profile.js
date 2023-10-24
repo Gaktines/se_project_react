@@ -13,7 +13,6 @@ const Profile = ({
   handleLogout,
   loggedIn,
   onCardLike,
-  handleCardLike,
   onSubmit,
 }) => {
   return (
@@ -26,7 +25,6 @@ const Profile = ({
         clothingItem={clothingItem}
         selectedCard={selectedCard}
         loggedIn={loggedIn}
-        handleCardLike={handleCardLike}
         onCardLIke={onCardLike}
       />
     </section>
