@@ -25,7 +25,7 @@ const Profile = ({
         clothingItem={clothingItem}
         selectedCard={selectedCard}
         loggedIn={loggedIn}
-        onCardLIke={onCardLike}
+        onCardLike={onCardLike}
       />
     </section>
   );
