@@ -3,10 +3,11 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./LoginModal.css";
 
 const LoginModal = ({
-  handleCloseModal,
   isOpen,
   setActiveModal,
   handleLogin,
+  isLoading,
+  handleCloseModal,
 }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,7 +22,6 @@ const LoginModal = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     handleLogin({ email, password });
-    handleCloseModal();
   };
 
   const onClickSignup = () => {
@@ -29,9 +29,10 @@ const LoginModal = ({
   };
   return (
     <ModalWithForm
-      onClose={handleCloseModal}
       isOpen={isOpen}
       onSubmit={handleSubmit}
+      buttonText={isLoading ? "Logging In..." : "Login"}
+      onClose={handleCloseModal}
     >
       <h2>Log in</h2>
       <label className="modal__label">
@@ -65,7 +66,7 @@ const LoginModal = ({
           className="modal__submit-button"
           type="submit"
           name="button"
-          onChange={handleSubmit}
+          onClick={handleSubmit}
         >
           Login
         </button>

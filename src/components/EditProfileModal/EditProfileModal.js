@@ -7,7 +7,7 @@ const EditProfileModal = ({
   isOpen,
   onSubmit,
   currentUser,
-
+  isLoading,
 }) => {
   const [name, setName] = useState(currentUser.name);
   const [avatar, setUrl] = useState(currentUser.avatar);
@@ -29,6 +29,7 @@ const EditProfileModal = ({
       onClose={handleCloseModal}
       isOpen={isOpen}
       onSubmit={handleSubmit}
+      buttonText={isLoading ? "Submitting Changes..." : "Submit Changes"}
     >
       <h2>Sign up</h2>
       <label className="modal__label">
@@ -40,7 +41,7 @@ const EditProfileModal = ({
           placeholder={currentUser.name}
           minLength="1"
           maxLength="30"
-          defaultValue={name}
+          value={name}
           onChange={handleNameChange}
         ></input>
       </label>
@@ -53,7 +54,7 @@ const EditProfileModal = ({
           placeholder={currentUser.avatar}
           minLength="1"
           maxLength="300"
-          defaultValue={avatar}
+          value={avatar}
           onChange={handleUrlChange}
         ></input>
       </label>
@@ -61,7 +62,7 @@ const EditProfileModal = ({
         className="modal__submit-button"
         type="submit"
         name="button"
-        onChange={handleSubmit}
+        onClick={handleSubmit}
       >
         Submit Changes
       </button>

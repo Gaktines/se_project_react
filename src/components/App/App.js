@@ -2,7 +2,7 @@ import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import ItemModal from "../ItemModal/ItemModal";
 import { sortWeatherData } from "../../utils/weatherApi";
 import { getWeatherForecast } from "../../utils/weatherApi";
@@ -17,10 +17,10 @@ import {
   editUserProfile,
 } from "../../utils/Api";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
-import { register, signin, checkToken } from "../../auth";
+import { register, signin, checkToken } from "../../utils/auth";
 import RegisterModal from "../../components/RegisterModal/RegisterModal";
 import LoginModal from "../../components/LoginModal/LoginModal";
-import { AppContext } from "../AppContext";
+import { AppContext } from "../../contexts/AppContext";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import { addCardLike, removeCardLike } from "../../utils/Api";
@@ -36,6 +36,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const appContextValue = { state: { loggedIn, userData } };
   const history = useHistory();
+  const [isLoading, setIsLoading] = React.useState(false);
 
   const handleItemCard = (card) => {
     setActiveModal("preview");
@@ -105,7 +106,8 @@ function App() {
       })
       .catch((error) => {
         console.error(error);
-      });
+      })
+      .finally();
   };
 
   const handleLogin = (email, password) => {
@@ -156,19 +158,21 @@ function App() {
   };
 
   const handleUpdate = (data) => {
+    setIsLoading(true);
     editUserProfile(data)
       .then((res) => {
         setCurrentUser(res.data);
         handleCloseModal();
       })
-      .catch((err) => console.error(err));
+      .catch((err) => console.error(err))
+      .finally(setIsLoading(false));
   };
 
   useEffect(() => {
-
     if (!activeModal) return; // stop the effect not to add the listener if there is no active modal
 
-    const handleEscClose = (e) => {  // define the function inside useEffect not to lose the reference on rerendering
+    const handleEscClose = (e) => {
+      // define the function inside useEffect not to lose the reference on rerendering
       if (e.key === "Escape") {
         handleCloseModal();
       }
@@ -176,12 +180,12 @@ function App() {
 
     document.addEventListener("keydown", handleEscClose);
 
-    return () => {  // don't forget to add a clean up function for removing the listener
+    return () => {
+      // don't forget to add a clean up function for removing the listener
       document.removeEventListener("keydown", handleEscClose);
     };
-  }, [activeModal]);  // watch activeModal here
+  }, [activeModal]); // watch activeModal here
 
-  
   useEffect(() => {
     fetchItems()
       .then((data) => {
@@ -206,25 +210,12 @@ function App() {
   useEffect(() => {
     const token = localStorage.getItem("jwt");
     if (token) {
-      checkToken(token).catch((error) => {
-        console.log(error);
-      });
-    } else {
-      console.log("Token not Found");
-    }
-  }, []);
-
-  useEffect(() => {
-    const token = localStorage.getItem("jwt");
-    if (token) {
       checkToken(token)
         .then((data) => {
           setCurrentUser(data.data); // Set the user data in your component state
           setLoggedIn(true);
         })
-        .catch((error) => {
-          console.error(error);
-        });
+        .catch(console.error);
     } else {
       localStorage.removeItem("jwt");
       setLoggedIn(false);

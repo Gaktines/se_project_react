@@ -3,10 +3,11 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./RegisterModal.css";
 
 const RegisterModal = ({
-  handleCloseModal,
   isOpen,
   setActiveModal,
   handleRegistration,
+  isLoading,
+  handleCloseModal,
 }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -29,16 +30,16 @@ const RegisterModal = ({
     e.preventDefault();
 
     handleRegistration(email, password, name, avatar);
-    handleCloseModal();
   };
   const onClickLogin = () => {
     setActiveModal("login");
   };
   return (
     <ModalWithForm
-      onClose={handleCloseModal}
       isOpen={isOpen}
       onSubmit={handleSubmit}
+      buttonText={isLoading ? "Saving..." : "Next"}
+      onClose={handleCloseModal}
     >
       <h2 className="modal_header">Sign up</h2>
       <label className="modal__label">
@@ -98,7 +99,7 @@ const RegisterModal = ({
           className="modal__submit-button"
           type="submit"
           name="button"
-          onChange={handleSubmit}
+          onClick={handleSubmit}
         >
           Next
         </button>
