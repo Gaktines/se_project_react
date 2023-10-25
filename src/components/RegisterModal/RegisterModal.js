@@ -2,31 +2,32 @@ import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./RegisterModal.css";
 
-
-const RegisterModal = ({ handleCloseModal, isOpen, setActiveModal, handleRegistration}) => {
+const RegisterModal = ({
+  handleCloseModal,
+  isOpen,
+  setActiveModal,
+  handleRegistration,
+}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [avatar, setUrl] = useState("");
 
   const handleEmailChange = (e) => {
-    console.log(e.target.value);
     setEmail(e.target.value);
   };
   const handlePasswordChange = (e) => {
-    console.log(e.target.value);
     setPassword(e.target.value);
   };
   const handleNameChange = (e) => {
     setName(e.target.value);
   };
   const handleUrlChange = (e) => {
-    console.log(e.target.value);
     setUrl(e.target.value);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(handleRegistration);
+
     handleRegistration(email, password, name, avatar);
     handleCloseModal();
   };
@@ -39,7 +40,6 @@ const RegisterModal = ({ handleCloseModal, isOpen, setActiveModal, handleRegistr
       isOpen={isOpen}
       onSubmit={handleSubmit}
     >
-      
       <h2 className="modal_header">Sign up</h2>
       <label className="modal__label">
         Email*
@@ -94,25 +94,24 @@ const RegisterModal = ({ handleCloseModal, isOpen, setActiveModal, handleRegistr
         ></input>
       </label>
       <div className="modal__button-container">
-      <button
-        className="modal__submit-button"
-        type="submit"
-        name="button"
-        onChange={handleSubmit}
-      >
-        Next
-      </button>
-      <button
-        className="modal__submit-login-button"
-        type="button"
-        name="button"
-        onClick={onClickLogin}
-      >
-        or Login
-      </button>
+        <button
+          className="modal__submit-button"
+          type="submit"
+          name="button"
+          onChange={handleSubmit}
+        >
+          Next
+        </button>
+        <button
+          className="modal__submit-login-button"
+          type="button"
+          name="button"
+          onClick={onClickLogin}
+        >
+          or Login
+        </button>
       </div>
     </ModalWithForm>
-
   );
 };
 

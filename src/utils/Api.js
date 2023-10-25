@@ -33,7 +33,6 @@ export const loadItems = ({ name, imageUrl, weather }) => {
 };
 
 export const removeItems = (selectedCard) => {
-  console.log(selectedCard);
   const deleteItems = fetch(`${baseUrl}/items/${selectedCard._id} `, {
     method: "DELETE",
     headers: {
@@ -54,7 +53,7 @@ export function editUserProfile({ name, avatar }) {
     },
     body: JSON.stringify({ name, avatar }),
   }).then(checkResponse);
-};
+}
 
 export const addCardLike = (itemId) => {
   return fetch(`${baseUrl}/items/${itemId}/likes`, {

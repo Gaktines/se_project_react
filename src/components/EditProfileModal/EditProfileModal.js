@@ -2,25 +2,28 @@ import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./EditProfileModal.css";
 
+const EditProfileModal = ({
+  handleCloseModal,
+  isOpen,
+  onSubmit,
+  currentUser,
 
-const EditProfileModal = ({ handleCloseModal, isOpen, onSubmit, currentUser }) => {
+}) => {
   const [name, setName] = useState(currentUser.name);
   const [avatar, setUrl] = useState(currentUser.avatar);
 
   const handleNameChange = (e) => {
-    console.log(e);
     setName(e.target.value);
   };
   const handleUrlChange = (e) => {
-    console.log(e.target.value);
     setUrl(e.target.value);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(name, avatar);
+
     onSubmit({ name: name, avatar: avatar });
   };
-  
+
   return (
     <ModalWithForm
       onClose={handleCloseModal}

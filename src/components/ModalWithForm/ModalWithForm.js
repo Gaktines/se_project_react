@@ -8,8 +8,10 @@ const ModalWithForm = ({
   buttonText,
   isOpen,
   onSubmit,
-  handleSubmit
+  handleSubmit,
 }) => {
+
+  
 
   return (
     <div className={`modal modal_type_${name}`}>

@@ -34,13 +34,11 @@ function Main({
       }
     }
   }, [temp, currentTemperatureUnit.currentTemperatureUnit]);
-  console.log(clothingItems);
+
   const sortedCards = clothingItems?.filter((item) => {
-    console.log(item);
-    console.log(weatherType);
     return item.weather.toLowerCase() === weatherType;
   });
-  console.log(sortedCards);
+
   return (
     <main className="main">
       <WeatherCard day={true} type="stormy" weatherTemp={weatherTemp.temp} />

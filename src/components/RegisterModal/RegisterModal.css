@@ -98,7 +98,7 @@
 }
 
 .modal__submit-button {
-  display: inline-flex;
+ 
   padding: 8px 16px;
   justify-content: center;
   align-items: center;
@@ -128,7 +128,7 @@
   border: none;
 }
 
-.modal__submit-login-button {
+.modal__submit-login-button:hover {
     cursor: pointer;
 }
 

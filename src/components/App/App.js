@@ -39,7 +39,7 @@ function App() {
 
   const handleItemCard = (card) => {
     setActiveModal("preview");
-    console.log(card);
+
     setSelectedCard(card);
   };
   const handleToggleSwitchChange = () => {
@@ -73,7 +73,6 @@ function App() {
   };
 
   const onAddItem = (values) => {
-    console.log(values);
     loadItems(values)
       .then((data) => {
         setClothingItems([data.data, ...clothingItems]);
@@ -93,15 +92,12 @@ function App() {
         setClothingItems(newClothingItems);
         handleCloseModal();
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => {});
   };
 
   const handleRegistration = (email, password, name, avatar) => {
     register(email, password, name, avatar)
       .then((res) => {
-        console.log(res);
         setCurrentUser(res.data);
         handleCloseModal();
         setLoggedIn(true);
@@ -118,10 +114,9 @@ function App() {
       .then((data) => {
         if (data.token) {
           localStorage.setItem("jwt", data.token);
-          console.log(data);
+
           checkToken(data.token)
             .then((res) => {
-              console.log(res);
               setCurrentUser(res.data);
               handleCloseModal();
               setLoggedIn(true);
@@ -161,16 +156,32 @@ function App() {
   };
 
   const handleUpdate = (data) => {
-    console.log(data);
     editUserProfile(data)
       .then((res) => {
-        console.log(res);
         setCurrentUser(res.data);
         handleCloseModal();
       })
       .catch((err) => console.error(err));
   };
 
+  useEffect(() => {
+
+    if (!activeModal) return; // stop the effect not to add the listener if there is no active modal
+
+    const handleEscClose = (e) => {  // define the function inside useEffect not to lose the reference on rerendering
+      if (e.key === "Escape") {
+        handleCloseModal();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscClose);
+
+    return () => {  // don't forget to add a clean up function for removing the listener
+      document.removeEventListener("keydown", handleEscClose);
+    };
+  }, [activeModal]);  // watch activeModal here
+
+  
   useEffect(() => {
     fetchItems()
       .then((data) => {
@@ -208,7 +219,6 @@ function App() {
     if (token) {
       checkToken(token)
         .then((data) => {
-          console.log(data);
           setCurrentUser(data.data); // Set the user data in your component state
           setLoggedIn(true);
         })
@@ -221,7 +231,7 @@ function App() {
       console.log("Token not Found");
     }
   }, [loggedIn, history]);
-  console.log(currentUser);
+
   return (
     <CurrentTemperatureUnitContext.Provider
       value={{ currentTemperatureUnit, handleToggleSwitchChange }}

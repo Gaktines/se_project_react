@@ -2,17 +2,19 @@ import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./LoginModal.css";
 
-
-const LoginModal = ({ handleCloseModal, isOpen, setActiveModal, handleLogin }) => {
+const LoginModal = ({
+  handleCloseModal,
+  isOpen,
+  setActiveModal,
+  handleLogin,
+}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleEmailChange = (e) => {
-    console.log(e.target.value);
     setEmail(e.target.value);
   };
   const handlePasswordChange = (e) => {
-    console.log(e.target.value);
     setPassword(e.target.value);
   };
 

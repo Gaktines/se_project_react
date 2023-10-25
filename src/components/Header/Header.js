@@ -13,10 +13,9 @@ const Header = ({ onClick, loggedIn, onClickSignup, onClickLogin }) => {
   });
   const showAvatar = avatar !== "" ? true : false;
   const currentUser = useContext(CurrentUserContext);
-  console.log(currentUser);
+
   const name = currentUser ? currentUser.name : "";
-  console.log(name);
-  console.log(loggedIn);
+
   return (
     <header className="header">
       <div className="header__logo">

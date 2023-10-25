@@ -7,20 +7,16 @@ const ClothesSection = ({
   onSelectCard,
   handleActiveCreateModal,
   clothingItems,
-  selectedCard, 
+  selectedCard,
   setSelectedCard,
   loggedIn,
   onCardLike,
-},) => {
-  
-  
+}) => {
   const currentUser = useContext(CurrentUserContext);
-  console.log(currentUser);
+
   const parsedCards = clothingItems.filter((item) => {
-    console.log(item.owner, currentUser?._id);
     const isOwn = item.owner === currentUser?._id;
-   return isOwn;
-    
+    return isOwn;
   });
 
   return (
@@ -37,21 +33,21 @@ const ClothesSection = ({
       </div>
       <div className="clothesSection__cards">
         <div className="clothesSection__card-items">
-          {parsedCards.map((x) => 
-            {console.log(x)
-              return (
-            <ItemCard
-              item={x}
-              key={x._id}
-              onCardLike={onCardLike} 
-              onSelectCard={onSelectCard}
-              selectedCard={selectedCard}
-              onClick={() => {
-                setSelectedCard(x)
-              }}
-              loggedIn={loggedIn}
-            />)}
-            )}
+          {parsedCards.map((x) => {
+            return (
+              <ItemCard
+                item={x}
+                key={x._id}
+                onCardLike={onCardLike}
+                onSelectCard={onSelectCard}
+                selectedCard={selectedCard}
+                onClick={() => {
+                  setSelectedCard(x);
+                }}
+                loggedIn={loggedIn}
+              />
+            );
+          })}
         </div>
       </div>
     </section>
