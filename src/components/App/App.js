@@ -112,7 +112,10 @@ function App() {
 
   const handleLogin = (email, password) => {
     signin(email, password)
-      .then((response) => response.json())
+      .then((response) => {
+        return response;
+      })
+
       .then((data) => {
         if (data.token) {
           localStorage.setItem("jwt", data.token);
