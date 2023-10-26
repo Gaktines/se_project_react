@@ -1,6 +1,5 @@
 import "./Header.css";
 import wtwrLogo from "../../images/wtwrLogo.svg";
-import avatar from "../../images/avatar.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
@@ -11,8 +10,10 @@ const Header = ({ onClick, loggedIn, onClickSignup, onClickLogin }) => {
     month: "short",
     date: "numeric",
   });
-  const showAvatar = avatar !== "" ? true : false;
   const currentUser = useContext(CurrentUserContext);
+  const avatar = currentUser ? currentUser.avatar : undefined;
+  const showAvatar = avatar !== "" ? true : false;
+ 
 
   const name = currentUser ? currentUser.name : "";
 

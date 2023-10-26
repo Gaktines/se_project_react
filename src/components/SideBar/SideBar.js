@@ -1,14 +1,13 @@
 import React, { useContext } from "react";
 import "./SideBar.css";
-import avatar from "../../images/avatar.svg";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const SideBar = ({ handleEditModal, handleLogout }) => {
-  const showAvatar = avatar !== "" ? true : false;
   const currentUser = useContext(CurrentUserContext);
-
   const name = currentUser ? currentUser.name : "";
-
+  const avatar = currentUser ? currentUser.avatar : undefined;
+  const showAvatar = avatar !== "" ? true : false;
+ 
   return (
     <div className="sideBar">
       <div>

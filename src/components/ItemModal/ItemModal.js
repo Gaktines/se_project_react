@@ -34,7 +34,7 @@ const ItemModal = ({
           <div className="modal__weather-type">
             Weather: {selectedCard.weather}
           </div>
-          {loggedIn ? (
+          {loggedIn && isOwn ? (
             <button
               className={modalDeleteClassName}
               type="button"
