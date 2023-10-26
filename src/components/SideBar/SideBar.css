@@ -67,3 +67,9 @@
   font-family: Cabinet Grotesk;
 
 }
+
+.sideBar__avatar {
+  max-width: 40px;
+  max-height: 40px;
+  border-radius: 50%;
+}

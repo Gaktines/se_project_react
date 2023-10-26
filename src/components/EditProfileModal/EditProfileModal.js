@@ -58,14 +58,7 @@ const EditProfileModal = ({
           onChange={handleUrlChange}
         ></input>
       </label>
-      <button
-        className="modal__submit-button"
-        type="submit"
-        name="button"
-        onClick={handleSubmit}
-      >
-        Submit Changes
-      </button>
+      
     </ModalWithForm>
   );
 };

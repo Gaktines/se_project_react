@@ -12,7 +12,7 @@ const SideBar = ({ handleEditModal, handleLogout }) => {
     <div className="sideBar">
       <div>
         {showAvatar ? (
-          <img src={avatar} alt="avatar" />
+          <img className="sideBar__avatar" src={avatar} alt="avatar" />
         ) : (
           <p className="avatar__placeholder">{name[0]?.toUpperCase()}</p>
         )}

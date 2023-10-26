@@ -21,7 +21,7 @@ export const signin = ({ email, password }) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ email, password }),
-  }).then(checkResponse);
+  }).then((res) => checkResponse(res));
 };
 
 // register
@@ -34,10 +34,7 @@ export const register = (email, password, name, avatar, token) => {
     },
     body: JSON.stringify({ email, password, name, avatar }, token),
   }).then((response) => {
-    checkResponse();
-    if (response.status === 200) {
-      return response.json();
-    }
+    checkResponse(response);
   });
 };
 
@@ -49,5 +46,5 @@ export const checkToken = (token) => {
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
-  }).then(checkResponse);
+  }).then((res) => checkResponse(res));
 };

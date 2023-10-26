@@ -14,7 +14,7 @@ export const fetchItems = () => {
     headers: {
       "Content-Type": "application/json",
     },
-  }).then(checkResponse);
+  }).then((res) => checkResponse(res));
   return getItems;
 };
 
@@ -27,7 +27,7 @@ export const loadItems = ({ name, imageUrl, weather }) => {
       authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ name, imageUrl, weather }),
-  }).then(checkResponse);
+  }).then((res) => checkResponse(res));
 
   return postItems;
 };
@@ -39,7 +39,7 @@ export const removeItems = (selectedCard) => {
       "Content-Type": "application/json",
       authorization: `Bearer ${localStorage.getItem("jwt")}`,
     },
-  }).then(checkResponse);
+  }).then((res) => checkResponse(res));
   return deleteItems;
 };
 
@@ -52,7 +52,7 @@ export function editUserProfile({ name, avatar }) {
       authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ name, avatar }),
-  }).then(checkResponse);
+  }).then((res) => checkResponse(res));
 }
 
 export const addCardLike = (itemId) => {
@@ -62,7 +62,7 @@ export const addCardLike = (itemId) => {
       "Content-Type": "application/json",
       authorization: `Bearer ${localStorage.getItem("jwt")}`,
     },
-  }).then(checkResponse);
+  }).then((res) => checkResponse(res));
 };
 
 export const removeCardLike = (itemId) => {
@@ -72,5 +72,5 @@ export const removeCardLike = (itemId) => {
       "Content-Type": "application/json",
       authorization: `Bearer ${localStorage.getItem("jwt")}`,
     },
-  }).then(checkResponse);
+  }).then((res) => checkResponse(res));
 };

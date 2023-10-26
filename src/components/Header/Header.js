@@ -41,7 +41,7 @@ const Header = ({ onClick, loggedIn, onClickSignup, onClickLogin }) => {
             <Link to="/profile">{currentUser?.name}</Link>
             <div>
               {showAvatar ? (
-                <img src={avatar} alt="avatar" />
+                <img className="header__avatar" src={avatar} alt="avatar" />
               ) : (
                 <p className="avatar__placeholder">{name[0]?.toUpperCase()}</p>
               )}

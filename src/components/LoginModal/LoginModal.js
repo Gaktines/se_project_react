@@ -62,14 +62,7 @@ const LoginModal = ({
         ></input>
       </label>
       <div className="modal__button-container">
-        <button
-          className="modal__submit-button"
-          type="submit"
-          name="button"
-          onClick={handleSubmit}
-        >
-          Login
-        </button>
+        
         <button
           className="modal__submit-register-button"
           type="button"

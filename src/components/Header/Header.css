@@ -39,3 +39,9 @@
   border: none;
   
 }
+
+.header__avatar {
+  max-width: 40px;
+  max-height: 40px;
+  border-radius: 50%;
+}

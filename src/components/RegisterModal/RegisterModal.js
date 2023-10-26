@@ -95,14 +95,7 @@ const RegisterModal = ({
         ></input>
       </label>
       <div className="modal__button-container">
-        <button
-          className="modal__submit-button"
-          type="submit"
-          name="button"
-          onClick={handleSubmit}
-        >
-          Next
-        </button>
+       
         <button
           className="modal__submit-login-button"
           type="button"

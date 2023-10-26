@@ -13,7 +13,7 @@ const ClothesSection = ({
   onCardLike,
 }) => {
   const currentUser = useContext(CurrentUserContext);
-
+console.log(clothingItems);
   const parsedCards = clothingItems.filter((item) => {
     const isOwn = item.owner === currentUser?._id;
     return isOwn;

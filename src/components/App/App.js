@@ -93,21 +93,26 @@ function App() {
         setClothingItems(newClothingItems);
         handleCloseModal();
       })
-      .catch((err) => {});
+      .catch((err) => {
+        console.error(err);
+      });
   };
 
   const handleRegistration = (email, password, name, avatar) => {
     register(email, password, name, avatar)
       .then((res) => {
+        setLoggedIn(true);
         setCurrentUser(res.data);
         handleCloseModal();
-        setLoggedIn(true);
+        
         history.push("/profile");
       })
       .catch((error) => {
         console.error(error);
       })
-      .finally();
+      .finally(() => 
+      setLoggedIn(false));
+
   };
 
   const handleLogin = (email, password) => {
@@ -122,9 +127,10 @@ function App() {
 
           checkToken(data.token)
             .then((res) => {
+              setLoggedIn(true);
               setCurrentUser(res.data);
               handleCloseModal();
-              setLoggedIn(true);
+              
               history.push("/profile");
             })
             .catch((error) => {
@@ -168,7 +174,7 @@ function App() {
         handleCloseModal();
       })
       .catch((err) => console.error(err))
-      .finally(setIsLoading(false));
+      .finally(() => setIsLoading(false));
   };
 
   useEffect(() => {
@@ -218,7 +224,7 @@ function App() {
           setCurrentUser(data.data); // Set the user data in your component state
           setLoggedIn(true);
         })
-        .catch(console.error);
+        .catch(() => console.error);
     } else {
       localStorage.removeItem("jwt");
       setLoggedIn(false);
