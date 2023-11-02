@@ -79,8 +79,8 @@ function App() {
         setClothingItems([data.data, ...clothingItems]);
         handleCloseModal();
       })
-      .catch((error) => {
-        console.error(error.status);
+      .catch((err) => {
+        console.error(err);
       });
   };
 
@@ -101,6 +101,7 @@ function App() {
   const handleRegistration = (email, password, name, avatar) => {
     register(email, password, name, avatar)
       .then((res) => {
+        console.log(res);
         setLoggedIn(true);
         setCurrentUser(res.data);
         handleCloseModal();
