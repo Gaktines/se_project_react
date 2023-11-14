@@ -1,4 +1,5 @@
 {
+  "deploy": "npm run build && scp -r ./build/* gaktines@www.wtwr.ix.tc:/home/tripletenuser/frontend",
   "homepage": "www.wtwr.ix.tc",
   "name": "se_project_react",
   "version": "0.1.0",
