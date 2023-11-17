@@ -1,7 +1,7 @@
 import { checkResponse } from "./Api";
 
 export const baseUrl = process.env.NODE_ENV === 'production' 
-? 'https://api.wtwr.ix.tc/'
+? 'https://api.wtwr.ix.tc'
 : 'http://localhost:3001';
 
 // signup
