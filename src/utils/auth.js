@@ -36,7 +36,7 @@ export const register = (email, password, name, avatar, token) => {
     },
     body: JSON.stringify({ email, password, name, avatar }, token),
   }).then((response) => {
-    checkResponse(response).then((data) => {
+    return checkResponse(response).then((data) => {
       if (data.status === 201) {
         return data;
       } else {
