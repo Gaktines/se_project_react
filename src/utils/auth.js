@@ -38,8 +38,8 @@ export const register = (email, password, name, avatar, token) => {
   }).then((response) => {
     return checkResponse(response).then((data) => {
       console.log(data);
-      if (data.status === 201) {
-        return data;
+      if (data.data.status === 201) {
+        return data.data;
       } else {
         throw new Error(data.message);
       }
