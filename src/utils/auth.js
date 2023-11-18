@@ -39,7 +39,7 @@ export const register = (email, password, name, avatar, token) => {
     return checkResponse(response).then((data) => {
       console.log(data);
       console.log(response);
-      if (data.data.status === 201) {
+      if (response.status === 201) {
         return data.data;
       } else {
         throw new Error(data.message);
