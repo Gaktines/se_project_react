@@ -1,4 +1,8 @@
-This is an application using React to tell you what to wear depending on where you are located and the temperature where you aree at.  The link to the backend for this project is here: https://github.com/Gaktines/se_project_express.git  The domain for this is https://www.wtwr.ix.tc
+WTWR - What To Wear
+
+This is an application using React to tell you what to wear depending on where you are located and the temperature where you aree at. This was my first time using React to build an app so it was a learning experience for me but it was fun. 
+
+The link to the backend for this project is here: https://github.com/Gaktines/se_project_express.git  The domain for this is https://www.wtwr.ix.tc
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
